@@ -543,7 +543,7 @@ function toKV(obj, key) {
     } else if(obj instanceof Array) {
         // An array of strings
         for(var i=0; i<obj.length; i++) {
-            myStr = myStr + '"' + escapeString(key) + '" "' + escapeString(obj[i]) + '"';
+            myStr = myStr + '"' + escapeString(key) + '"\n"' + escapeString(obj[i]) + '"';
         }
 
         return myStr;
