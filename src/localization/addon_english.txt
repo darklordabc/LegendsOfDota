@@ -2,6 +2,7 @@
 {
     // The name of the game
     "ADDON_GAME_NAME"                               "Legends of Dota"
+    "addon_game_name"                               "Legends of Dota"
     "addonname"                                     "Legends of Dota"
     "game_mode_15_desc"                             "Build a fully sick hero"
 
