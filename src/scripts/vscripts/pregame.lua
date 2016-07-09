@@ -1626,6 +1626,20 @@ function Pregame:initOptionSelector()
             return true
         end,
 
+        -- Game Speed -- Buyback Cooldown
+        lodOptionGameSpeedBuybackCooldown = function(value)
+            -- Ensure gamemode is set to custom
+            if self.optionStore['lodOptionGamemode'] ~= -1 then return false end
+
+            -- It needs to be a whole number between a certain range
+            if type(value) ~= 'number' then return false end
+            if math.floor(value) ~= value then return false end
+            if value < 0 or value > 7 * 60 then return false end
+
+            -- Valid
+            return true
+        end,
+
         -- Game Speed -- Towers per lane
         lodOptionGameSpeedTowersPerLane = function(value)
             -- Ensure gamemode is set to custom
@@ -1856,6 +1870,9 @@ function Pregame:initOptionSelector()
                 self:setOption('lodOptionGameSpeedRespawnTimePercentage', 100, true)
                 self:setOption('lodOptionGameSpeedRespawnTimeConstant', 0, true)
 
+                -- Default buyback cooldown
+                self:setOption('lodOptionGameSpeedBuybackCooldown', 7 * 60, true)
+
                 -- 3 Towers per lane
                 self:setOption('lodOptionGameSpeedTowersPerLane', 3, true)
 
@@ -1923,6 +1940,9 @@ function Pregame:initOptionSelector()
                     -- Set respawn to 10%
                     self:setOption('lodOptionGameSpeedRespawnTimePercentage', 10, true)
                     self:setOption('lodOptionGameSpeedRespawnTimeConstant', 0, true)
+
+                    -- Buyback cooldown really low
+                    self:setOption('lodOptionGameSpeedBuybackCooldown', 60, true)
 
                     -- Starting level is lvl 6
                     self:setOption('lodOptionGameSpeedStartingLevel', 6, true)
@@ -2524,6 +2544,16 @@ function Pregame:processOptions()
 	        Convars:SetBool('dota_all_vision', true)
 	    end
 
+	    -- Buyback cooldown
+	    if this.optionStore['lodOptionGameSpeedBuybackCooldown'] ~= 7 * 60 then
+	    	local newBuybackCooldown = this.optionStore['lodOptionGameSpeedBuybackCooldown']
+
+		    local maxPlayers = 24
+		    for playerID=0,(maxPlayers - 1) do
+		    	SetCustomBuybackCooldown(playerID, newBuybackCooldown)
+		    end
+		end
+
 	    if OptionManager:GetOption('maxHeroLevel') ~= 25 then
 	        GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel(constants.XP_PER_LEVEL_TABLE)
 	        GameRules:GetGameModeEntity():SetCustomHeroMaxLevel(OptionManager:GetOption('maxHeroLevel'))
@@ -2566,6 +2596,7 @@ function Pregame:processOptions()
 			        ['XP Modifier'] = math.floor(this.optionStore['lodOptionGameSpeedEXPModifier']),
 		            ['Respawn Modifier Percentage'] = math.floor(this.optionStore['lodOptionGameSpeedRespawnTimePercentage']),
 			        ['Respawn Modifier Constant'] = this.optionStore['lodOptionGameSpeedRespawnTimeConstant'],
+			        ['Buyback Cooldown'] = this.optionStore['lodOptionGameSpeedBuybackCooldown'],
 			        ['Towers Per Lane'] = this.optionStore['lodOptionGameSpeedTowersPerLane'],
 			        ['Start With Upgraded Ults'] = this.optionStore['lodOptionGameSpeedUpgradedUlts'],
 			        ['Start With Free Courier'] = this.optionStore['lodOptionGameSpeedFreeCourier'],

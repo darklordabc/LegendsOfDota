@@ -360,6 +360,16 @@ var allOptions = {
                 default: 0
             },
             {
+                name: 'lodOptionGameSpeedBuybackCooldown',
+                des: 'lodOptionDesGameSpeedBuybackCooldown',
+                about: 'lodOptionAboutGameSpeedBuybackCooldown',
+                sort: 'range',
+                min: 0,
+                max: 7 * 60,    // Number of seconds
+                step: 1,
+                default: 7 * 60 // 7 minuntes is the default
+            },
+            {
                 name: 'lodOptionGameSpeedTowersPerLane',
                 des: 'lodOptionDesGameSpeedTowersPerLane',
                 about: 'lodOptionAboutGameSpeedTowersPerLane',
