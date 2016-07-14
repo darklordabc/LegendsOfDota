@@ -51,7 +51,7 @@ function onGetPlayerStats(table_name, key, data) {
         img: 'file://{images}/spellicons/death_prophet_witchcraft.png',
         txt: '#hintWitchCraft'
     }, {
-        img: 'file://{images}/spellicons/ogre_magi_multicast.png',
+        img: 'file://{images}/spellicons/multicast_lod.png',
         txt: '#hintMulticast'
     }, {
         img: 'file://{images}/spellicons/invoker_alacrity.png',
