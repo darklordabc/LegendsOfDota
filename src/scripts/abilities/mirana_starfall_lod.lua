@@ -2,6 +2,14 @@ function ScepterStarfallCheck( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 
+	-- is this an illusion?
+	if caster:IsIllusion() then
+		-- Remove thinker
+		caster:RemoveModifierByName('modifier_mirana_starfall_scepter_thinker')
+
+		return
+	end
+
 	-- Check if we actually have scepter
 	if caster:HasScepter() and not caster:IsInvisible() then
 		local abLevel = ability:GetLevel()
