@@ -2545,14 +2545,7 @@ function Pregame:processOptions()
 	    end
 
 	    -- Buyback cooldown
-	    if this.optionStore['lodOptionGameSpeedBuybackCooldown'] ~= 7 * 60 then
-	    	local newBuybackCooldown = this.optionStore['lodOptionGameSpeedBuybackCooldown']
-
-		    local maxPlayers = 24
-		    for playerID=0,(maxPlayers - 1) do
-		    	SetCustomBuybackCooldown(playerID, newBuybackCooldown)
-		    end
-		end
+	    OptionManager:SetOption('buybackCooldown', this.optionStore['lodOptionGameSpeedBuybackCooldown'])
 
 	    if OptionManager:GetOption('maxHeroLevel') ~= 25 then
 	        GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel(constants.XP_PER_LEVEL_TABLE)

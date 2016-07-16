@@ -148,6 +148,9 @@ OptionManager:SetOption('useLevel1ults', false)
 -- Full price sellback
 OptionManager:SetOption('fullPriceSellback', false)
 
+-- Buyback cooldown
+OptionManager:SetOption('buybackCooldown', 7 * 60)
+
 --[[
     GAMEMODE STUFF
 ]]
