@@ -3267,7 +3267,11 @@ function buildOptionsCategories() {
                     infoLabel.AddClass('optionSlotPanelLabel');
 
                     mainSlot.SetPanelEvent('onmouseover', function() {
-                        $('#optionInfoLabel').text = $.Localize(info.about);
+                        $.DispatchEvent('DOTAShowTitleTextTooltipStyled', mainSlot, info.des, info.about, 'testStyle');
+                    });
+
+                    mainSlot.SetPanelEvent('onmouseout', function() {
+                        $.DispatchEvent('DOTAHideTitleTextTooltip');
                     });
 
                     // Is this a preset?
@@ -4458,6 +4462,65 @@ function onPlayerCastVote(category, choice) {
             castVote(category, answer);
         break;
     }
+}
+
+// Export options
+function onExportOptionsPressed() {
+    //$.Msg(optionValueList)
+    //$.Msg(JSON.stringify(optionValueList));
+
+    $('#optionImporterEntry').text = JSON.stringify(optionValueList).replace(/,/g, ',\n');
+
+    setImportError('exportSuccess', true);
+}
+
+function setImportError(msg, good) {
+    if(msg == null) msg = '';
+
+    $('#optionImporterErrorMessage').text = $.Localize(msg);
+    $('#optionImporterErrorMessage').visible = true;
+
+    $('#optionImporterErrorMessage').SetHasClass('isGoodMessage', good && true || false);
+}
+
+// Import Button
+function onImportOptionsPressed() {
+    var data = $('#optionImporterEntry').text;
+    if(data.length == 0) {
+        return setImportError('importFailedNoInput');
+    }
+
+    var decodeData;
+    try {
+        decodeData = JSON.parse(data);
+    } catch(e) {
+        return setImportError('importFailedInvalidJSON');
+    }
+
+    // Set preset first
+    if(decodeData.lodOptionGamemode) {
+        setOption('lodOptionGamemode', decodeData.lodOptionGamemode);
+    }
+
+    // Set each option
+    for(var key in decodeData) {
+        if(key == 'lodOptionGamemode') continue;
+        setOption(key, decodeData[key]);
+    }
+
+    // Success
+    setImportError('importSuccess', true);
+}
+
+// Close importer
+function onImportCloseOptionsPressed() {
+    $('#optionImporter').visible = false;
+}
+
+// Open Importer
+function onImportOptionsOpenPressed() {
+    $('#optionImporterErrorMessage').visible = false;
+    $('#optionImporter').visible = true;
 }
 
 //--------------------------------------------------------------------------------------------------

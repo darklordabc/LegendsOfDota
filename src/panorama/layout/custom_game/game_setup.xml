@@ -174,14 +174,34 @@
             <Panel id="optionSelection">
                 <Panel id="optionCategories" />
                 <Panel id="optionList" />
-                <Panel id="optionInfo">
-                    <Label id="optionInfoLabel" />
+                <Panel id="optionExport">
+                    <Button class="heroBuildMenuButtonSmall lockBuildButton" onactivate="onImportOptionsOpenPressed()">
+                        <Label text="importOptions" />
+                    </Button>
                 </Panel>
                 <Panel id="optionButtons">
                     <Label id="lockTeamsFirst" text="lockTeamsFirst" />
                     <Button id="lockOptionsButton" class="PlayButton" onactivate="onLockOptionsPressed()">
                         <Label text="lockOptions" />
                     </Button>
+                </Panel>
+
+                <Panel id="optionImporter">
+                    <Panel id="optionImporterInfo">
+                        <TextEntry id="optionImporterEntry" placeholder="pasteCodeHere" />
+                        <Label id="optionImporterErrorMessage" text="importError" />
+                    </Panel>
+                    <Panel id="optionImporterButtons">
+                        <Button class="heroBuildMenuButtonSmall lockBuildButton" onactivate="onImportOptionsPressed()">
+                            <Label text="importOptions" />
+                        </Button>
+                        <Button class="heroBuildMenuButtonSmall lockBuildButton" onactivate="onExportOptionsPressed()">
+                            <Label text="exportOptions" />
+                        </Button>
+                        <Button class="heroBuildMenuButtonSmall lockBuildButton" onactivate="onImportCloseOptionsPressed()">
+                            <Label text="closeImporter" />
+                        </Button>
+                    </Panel>
                 </Panel>
             </Panel>
 
