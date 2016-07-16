@@ -919,6 +919,19 @@ var recommendedBuilds = [
             6: 'alchemist_chemical_rage',
         },
     },
+    {
+        title: 'Building Buster',
+        heroName: 'npc_dota_hero_treant',
+        attr: 'str',
+        build: {
+            1: 'sven_gods_strength',
+            2: 'furion_teleportation',
+            3: 'troll_warlord_berserkers_rage',
+            4: 'phantom_assassin_blur',
+            5: 'lone_druid_spirit_bear_demolish',
+            6: 'windrunner_focusfire',
+        },
+    },
 ];
 
 // Phases
