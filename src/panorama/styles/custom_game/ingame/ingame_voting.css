@@ -28,6 +28,7 @@
 	padding: 8px;
 
 	flow-children: down;
+	overflow: squish scroll;
 
 	visibility: collapse;
 }

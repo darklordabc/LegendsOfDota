@@ -16,7 +16,8 @@ var votingMenus = {
 			},
 			{
 				title: 'votingGameplay',
-				des: 'votingGameplayDes'
+				des: 'votingGameplayDes',
+				link: 'gameplay'
 			},
 			{
 				title: 'votingGiveup',
@@ -32,6 +33,21 @@ var votingMenus = {
 				des: 'votingGoBackDes',
 				link: 'mainMenu'
 			}
+		]
+	},
+	gameplay: {
+		items: [
+			{
+				title: 'votingGoBack',
+				des: 'votingGoBackDes',
+				link: 'mainMenu'
+			},
+			{
+				title: 'votingGameplayAddGold',
+				des: 'votingGameplayAddGoldDes',
+				confirmVote: true,
+				back: 'gameplay'
+			},
 		]
 	},
 	giveup: {
