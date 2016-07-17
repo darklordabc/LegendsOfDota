@@ -15,6 +15,12 @@
         GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ENDGAME, false);
     </script>
 
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/shared/shared_init.js" />
+        <include src="file://{resources}/scripts/custom_game/shared/shared_options.js" />
+        <include src="file://{resources}/scripts/custom_game/shared/shared_builds.js" />
+    </scripts>
+
 	<Panel>
         <CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/game_setup.xml" />
         <CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/hero_selection.xml" />
