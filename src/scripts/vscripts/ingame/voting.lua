@@ -23,8 +23,6 @@ end
 
 -- Adds the network hooks
 function lodVoting:addNetworkHooks()
-	print('hello!')
-
 	local this = self
 
 	-- Creating a vote
@@ -111,9 +109,16 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 	-- Grab the players team
 	local plyTeam = PlayerResource:GetCustomTeamAssignment(theVote.playerID)
 
+	local this = self
+
 	local votingPrepare = {
 		-- Calling GG
 		votingGiveupCallGG = function()
+			-- Are we pregame?
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+				return true
+			end
+
 			-- Team only vote
 			theVote.team = plyTeam
 
@@ -122,7 +127,25 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 
 			-- Callback
 			theVote.callback = function()
-				print('vote passed!')
+				-- Call GG
+				this:callGG(theVote.team)
+			end
+		end,
+
+		-- Calling a draw
+		votingGiveupCallDraw = function()
+			-- Are we pregame?
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+				return true
+			end
+
+			-- Add the description
+			theVote.voteDes = 'votingGiveupCallDrawDes'
+
+			-- Callback
+			theVote.callback = function()
+				-- Call GG
+				GameRules:SetGameWinner(0)
 			end
 		end
 	}
@@ -283,6 +306,15 @@ function lodVoting:onPlyVoteCast(eventSourceIndex, args)
 
     -- Check if we can kill it
     self:checkVoteProgress()
+end
+
+-- Call GG
+function lodVoting:callGG(losingTeam)
+	if losingTeam == DOTA_TEAM_BADGUYS then
+		GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	elseif losingTeam == DOTA_TEAM_GOODGUYS then
+		GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+	end
 end
 
 -- Return an instance of this class

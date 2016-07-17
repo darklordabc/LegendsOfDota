@@ -46,8 +46,13 @@ var votingMenus = {
 				des: 'votingGiveupCallGGDes',
 				confirmVote: true,
 				back: 'giveup'
+			},
+			{
+				title: 'votingGiveupCallDraw',
+				des: 'votingGiveupCallDrawDes',
+				confirmVote: true,
+				back: 'giveup'
 			}
-
 		]
 	}
 };
