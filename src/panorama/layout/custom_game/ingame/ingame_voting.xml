@@ -1,0 +1,53 @@
+<root>
+	<styles>
+        <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+        <include src="s2r://panorama/styles/play.vcss_c" />
+        <include src="file://{resources}/styles/custom_game/ingame/ingame_voting.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/ingame/ingame_voting.js" />
+    </scripts>
+    <Panel class="rootVotingPanel" hittest="false">
+    	<Panel class="votingTopMenu">
+    		<Button class="niceButton" onactivate="onBtnOpenVoteSystemPressed()" hittest="true">
+                <Label text="openVoteSystem" />
+            </Button>
+    	</Panel>
+
+    	<Panel id="votingVoteCreationMenu" />
+
+    	<Panel id="votingActiveVote">
+    		<Panel id="votingActiveVoteInfo">
+	    		<Label id="voteTitle" text="test" />
+	    		<Label id="voteDes" text="test134" />
+	    		<Label id="votesRequired" text="10/10 votes required to pass" />
+	    		<Label id="voteBy" text="Vote created by Ash47" />
+	    		<Panel id="voteOptionsContainer">
+	    			<Button class="niceButton" onactivate="onBtnOpenVoteYesPressed()" hittest="true">
+		                <Label text="voteYes" />
+		            </Button>
+
+		            <Button class="niceButton" onactivate="onBtnOpenVoteNoPressed()" hittest="true">
+		                <Label text="voteNo" />
+		            </Button>
+	    		</Panel>
+	    		<Label text="lodVoteCountLabel" />
+	    		<Panel id="lodVoteCountContainer">
+	    			<Panel class="lodVoteCountContainerSub">
+	    				<Label text="Yes" />
+	    				<Label id="lodVoteCountYes" text="1" />
+	    			</Panel>
+
+	    			<Panel class="lodVoteCountContainerSub">
+	    				<Label text="No" />
+	    				<Label id="lodVoteCountNo" text="10" />
+	    			</Panel>
+	    		</Panel>
+	    	</Panel>
+	    	<Panel id="votingActiveVoteTimerContainer">
+	    		<Label id="votingActiveVoteTimer" text="60" />
+	    		<Label text="X" />
+	    	</Panel>
+    	</Panel>
+    </Panel>
+</root>

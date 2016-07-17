@@ -1,0 +1,142 @@
+.rootVotingPanel {
+	width: 100%;
+}
+
+.votingTopMenu {
+	horizontal-align: left;
+	vertical-align: top;
+	margin-left: 200px;
+	margin-top: 5px;
+}
+
+/*
+	Vote Creation
+*/
+
+#votingVoteCreationMenu {
+	width: 640px;
+	height: 480px;
+
+	margin-top: 54px;
+	margin-left: 8px;
+
+	background-color: gradient( linear, 100% 0%, 100% 100%, from( #272b30 ), color-stop( 0.6, #181a1e ), to( #181a1e ) );
+	border: 1px solid #000000;
+	border-radius: 8px;
+	box-shadow: black -4px -4px 8px 8px;
+
+	padding: 8px;
+
+	flow-children: down;
+}
+
+.votingVoteCreationItemBasic {
+	width: 100%;
+
+	background-color: gradient( linear, 100% 0%, 100% 100%, from( #272b30 ), color-stop( 0.6, #181a1e ), to( #181a1e ) );
+
+	border: 1px solid #000000;
+	border-radius: 8px;
+
+	margin-bottom: 4px;
+
+	padding: 8px;
+
+	wash-color: #eeeeee;
+}
+
+.votingVoteCreationItemBasic:hover {
+	wash-color: #FFFFFFFF;
+}
+
+.votingVoteCreationItemText {
+	flow-children: down;
+	margin-right: 48px;
+}
+
+.votingVoteCreationItemIcon {
+	horizontal-align: right;
+	vertical-align: middle;
+
+	margin-right: 4px;
+
+	width: 48px;
+	height: 48px;
+	background-color: #FF0000;
+}
+
+.votingVoteCreationLabelTitle {
+	font-size: 24px;
+}
+
+/*
+	Active Vote
+*/
+
+#votingActiveVote {
+	width: 640px;
+
+	horizontal-align: right;
+	vertical-align: top;
+
+	margin-top: 54px;
+	margin-right: 8px;
+
+	background-color: gradient( linear, 100% 0%, 100% 100%, from( #272b30 ), color-stop( 0.6, #181a1e ), to( #181a1e ) );
+	border: 1px solid #000000;
+	border-radius: 8px;
+	box-shadow: black -4px -4px 8px 8px;
+
+	padding: 8px;
+}
+
+#votingActiveVoteInfo {
+	flow-children: down;
+}
+
+#voteOptionsContainer {
+	flow-children: right;
+}
+
+#votingActiveVoteTimerContainer {
+	vertical-align: top;
+	horizontal-align: right;
+
+	flow-children: right;
+}
+
+#voteTitle {
+	font-size: 24px;
+}
+
+#lodVoteCountContainer {
+	flow-children: right;
+}
+
+.lodVoteCountContainerSub {
+	flow-children: right;
+	margin-right: 8px;
+}
+
+/*
+	Buttons
+*/
+
+.niceButton {
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#3A607377), to(#16222A77));
+    border: 1px solid #000000;
+    border-radius: 4px;
+    wash-color: #cccccc;
+    padding: 4px;
+    padding-left: 8px;
+    horizontal-align: left;
+    margin-left: 8px;
+    margin-right: 8px;
+
+    transition-property: opacity;
+    transition-duration: 0.25s;
+}
+
+.niceButton:hover {
+    wash-color: #FFFFFFFF;
+}

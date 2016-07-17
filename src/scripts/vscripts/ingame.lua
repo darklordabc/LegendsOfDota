@@ -3,6 +3,7 @@ local constants = require('constants')
 local network = require('network')
 local OptionManager = require('optionmanager')
 local Timers = require('easytimers')
+local lodVoting = require('ingame.voting')
 
 -- Create the class for it
 local Ingame = class({})
@@ -58,6 +59,9 @@ function Ingame:onStart()
     ListenToGameEvent('player_connect_full', function(keys)
         this:checkBalanceTeamsNextTick()
     end, nil)
+
+    -- Init voting system
+    lodVoting:init()
 end
 
 -- Balances a player onto another team
