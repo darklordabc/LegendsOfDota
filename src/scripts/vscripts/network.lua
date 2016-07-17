@@ -190,5 +190,10 @@ function Network:sharePlayerStats(stats)
     CustomNetTables:SetTableValue('phase_pregame', 'stats', stats)
 end
 
+-- Vote stuff
+function Network:updateVoteInfo(voteInfo)
+    CustomNetTables:SetTableValue('phase_ingame', 'vote', voteInfo)
+end
+
 -- Return an instance of it
 return Network()

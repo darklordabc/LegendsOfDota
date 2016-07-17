@@ -52,6 +52,10 @@ var votingMenus = {
 	}
 };
 
+// The ID of a vote we have hidden
+var hiddenVote;
+var activeVoteData;
+
 // When the user wants to open the voting menu
 function onBtnOpenVoteSystemPressed() {
 	// Toggles the creation menu
@@ -205,6 +209,102 @@ function createVote(info, data) {
 	});
 }
 
+// When we get ingame data
+function OnGetIngameData(table_name, key, data) {
+	if(key == 'vote') {
+		OnGetVoteData(table_name, key, data);
+		return;
+	}
+}
+
+// When we get vote data
+function OnGetVoteData(table_name, key, data) {
+	var playerID = Players.GetLocalPlayer();
+	var plyVotes = data.plyVotes;
+
+	// Store it
+	activeVoteData = data;
+
+	// Show or hide the player vote counter
+	var voteButtonsCon = $('#voteOptionsContainer');
+	if(plyVotes[playerID] || data.finished) {
+		voteButtonsCon.visible = false;
+	} else {
+		voteButtonsCon.visible = true;
+	}
+
+	// Hide finish messages
+	$('#lodVotePassed').visible = false;
+	$('#lodVoteFailed').visible = false;
+
+	if(data.finished) {
+		if(data.passed) {
+			$('#lodVotePassed').visible = true;
+		} else {
+			$('#lodVoteFailed').visible = true;
+		}
+	}
+
+	// Update vote counts
+	$('#lodVoteCountYes').text = data.totalYes;
+	$('#lodVoteCountNo').text = data.totalNo;
+
+	// Update title
+	$('#voteTitle').text = $.Localize(data.voteTitle);
+
+	// Grab player name
+	$('#voteBy').text = '';
+	var plyInfo = Game.GetPlayerInfo(data.playerID);
+	if(plyInfo != null) {
+		var plyName = plyInfo.player_name;
+
+		if(plyName != null) {
+			$('#voteBy').text = $.Localize('voteCreatedBy').replace(/\{plyName\}/g, plyName)
+		}
+	}
+
+	// Update description
+	$('#voteDes').text = '';
+	if(data.voteDes != null) {
+		$('#voteDes').text = $.Localize(data.voteDes);
+	}
+
+	// Show it
+	$('#votingActiveVote').visible = true;
+
+	// Should we show it?
+	if(data.hideTime) {
+		var now = Game.Time();
+		if(now > data.hideTime) {
+			// Hide now
+			$('#votingActiveVote').visible = false;
+		} else {
+			// Hide in a few moments
+			var theVoteID = data.voteID;
+			$.Schedule(data.hideTime - now, function() {
+	            if(theVoteID == data.voteID) {
+	            	$('#votingActiveVote').visible = false;
+	            }
+	        });
+		}
+	} else {
+		if(hiddenVote == data.voteID) {
+			$('#votingActiveVote').visible = false;
+		}
+	}
+}
+
+// Close the active vote panel
+function closeActiveVotePanel() {
+	// Hide it
+	$('#votingActiveVote').visible = false;
+
+	// Stop it from popping back up
+	if(activeVoteData != null) {
+		hiddenVote = activeVoteData.voteID;
+	}
+}
+
 // Hook everything
 (function() {
 	// Define exports
@@ -212,6 +312,9 @@ function createVote(info, data) {
 		votingDisplayMenu: votingDisplayMenu,
 		votingConfirmVote: votingConfirmVote
 	}
+
+	// Hook vote changes
+	Game.shared.hookAndFire('phase_ingame', OnGetIngameData);
 
 	// Show the main voting menu
 	votingDisplayMenu('mainMenu');

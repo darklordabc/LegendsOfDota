@@ -456,6 +456,41 @@
     "heroStats_visionDay"                           "DAY VISION"
     "heroStats_visionNight"                         "NIGHT VISION"
 
+    // Voting
+    "votingChangeOptions"                           "Change Options"
+    "votingChangeOptionsDes"                        "Create a vote to change game options."
+
+    "votingBalanceTeams"                            "Balance Teams"
+    "votingBalanceTeamsDes"                         "Create a vote to balance teams, change teams and add bots."
+
+    "votingGameplay"                                "Gameplay"
+    "votingGameplayDes"                             "Create a vote to change up the gameplay, adding gold, experience and changing the map."
+
+    "votingGiveup"                                  "Surrender"
+    "votingGiveupDes"                               "Create a vote to end the game, surrendering or calling it a draw."
+
+    "votingGoBack"                                  "Go Back"
+    "votingGoBackDes"                               "Go back the the previous menu."
+
+    "votingCancelVote"                              "Go Back"
+    "votingCancelVoteDes"                           "Do not create the vote, return to the previous menu."
+
+    "votingCreateVote"                              "Create Vote"
+    "votingCreateVoteDes"                           "Create the vote."
+
+    "votingGiveupCallGG"                            "Call GG"
+    "votingGiveupCallGGDes"                         "Surrender, making your team lose, calling GG."
+
+    "voteYes"                                       "Yes"
+    "voteNo"                                        "No"
+
+    "lodVoteCountLabel"                             "Vote Counts"
+
+    "lodVotePassed"                                 "Vote has passed!"
+    "lodVoteFailed"                                 "Vote has failed!"
+
+    "voteCreatedBy"                                 "Vote created by {plyName}"
+
     /////////////////
     // UNIQUE HERO MECHANICS
     ////////////////

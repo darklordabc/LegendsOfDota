@@ -113,19 +113,6 @@ var isPremiumPlayer = false;
 var calculateFilters = function(){};
 var calculateHeroFilters = function(){};
 
-// Hooks an events and fires for all the keys
-function hookAndFire(tableName, callback) {
-    // Listen for phase changing information
-    CustomNetTables.SubscribeNetTableListener(tableName, callback);
-
-    // Grab the data
-    var data = CustomNetTables.GetAllTableValues(tableName);
-    for(var i=0; i<data.length; ++i) {
-        var info = data[i];
-        callback(tableName, info.key, info.value);
-    }
-}
-
 // Focuses on nothing
 function focusNothing() {
     $('#mainSelectionRoot').SetFocus();
@@ -3660,18 +3647,18 @@ function onImportOptionsOpenPressed() {
     $.RegisterForUnhandledEvent( "DOTAGame_PlayerSelectedCustomTeam", OnPlayerSelectedTeam );
 
     // Hook stuff
-    hookAndFire('phase_pregame', OnPhaseChanged);
-    hookAndFire('options', OnOptionChanged);
-    hookAndFire('heroes', OnHeroDataChanged);
-    hookAndFire('flags', OnFlagDataChanged);
-    hookAndFire('selected_heroes', OnSelectedHeroesChanged);
-    hookAndFire('selected_attr', OnSelectedAttrChanged);
-    hookAndFire('selected_skills', OnSelectedSkillsChanged);
-    hookAndFire('banned', OnSkillBanned);
-    hookAndFire('ready', OnGetReadyState);
-    hookAndFire('random_builds', OnGetRandomBuilds);
-    //hookAndFire('selected_random_builds', OnSelectedRandomBuildChanged);
-    hookAndFire('draft_array', OnGetDraftArray);
+    Game.shared.hookAndFire('phase_pregame', OnPhaseChanged);
+    Game.shared.hookAndFire('options', OnOptionChanged);
+    Game.shared.hookAndFire('heroes', OnHeroDataChanged);
+    Game.shared.hookAndFire('flags', OnFlagDataChanged);
+    Game.shared.hookAndFire('selected_heroes', OnSelectedHeroesChanged);
+    Game.shared.hookAndFire('selected_attr', OnSelectedAttrChanged);
+    Game.shared.hookAndFire('selected_skills', OnSelectedSkillsChanged);
+    Game.shared.hookAndFire('banned', OnSkillBanned);
+    Game.shared.hookAndFire('ready', OnGetReadyState);
+    Game.shared.hookAndFire('random_builds', OnGetRandomBuilds);
+    //Game.shared.hookAndFire('selected_random_builds', OnSelectedRandomBuildChanged);
+    Game.shared.hookAndFire('draft_array', OnGetDraftArray);
 
     // Listen for notifications
     GameEvents.Subscribe('lodNotification', function(data) {

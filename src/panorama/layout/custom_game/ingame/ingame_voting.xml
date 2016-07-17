@@ -20,8 +20,8 @@
     		<Panel id="votingActiveVoteInfo">
 	    		<Label id="voteTitle" text="test" />
 	    		<Label id="voteDes" text="test134" />
-	    		<Label id="votesRequired" text="10/10 votes required to pass" />
-	    		<Label id="voteBy" text="Vote created by Ash47" />
+	    		<Label id="votesRequired" text="votes required to pass" />
+	    		<Label id="voteBy" />
 	    		<Panel id="voteOptionsContainer">
 	    			<Button class="niceButton" onactivate="onBtnOpenVoteYesPressed()" hittest="true">
 		                <Label text="voteYes" />
@@ -43,10 +43,12 @@
 	    				<Label id="lodVoteCountNo" text="10" />
 	    			</Panel>
 	    		</Panel>
+	    		<Label id="lodVotePassed" text="lodVotePassed" />
+	    		<Label id="lodVoteFailed" text="lodVoteFailed" />
 	    	</Panel>
 	    	<Panel id="votingActiveVoteTimerContainer">
 	    		<Label id="votingActiveVoteTimer" text="60" />
-	    		<Label text="X" />
+	    		<Label text="X" onactivate="closeActiveVotePanel()" />
 	    	</Panel>
     	</Panel>
     </Panel>
