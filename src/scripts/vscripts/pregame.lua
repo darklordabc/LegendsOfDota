@@ -2309,100 +2309,6 @@ function Pregame:precacheBuilds()
     continueCachingHeroes()
 end
 
-
-
-
---[[function Pregame:precacheBuilds()
-    local allSkills = {}
-    local alreadyAdded = {}
-
-    local timerDelay = 0
-
-    for k,v in pairs(self.selectedSkills) do
-        for kk,vv in pairs(v) do
-            if not alreadyAdded[vv] then
-                alreadyAdded[vv] = true
-                table.insert(allSkills, vv)
-            end
-        end
-    end
-
-    local allPlayerIDs = {}
-    for i=0,24 do
-        if PlayerResource:IsValidPlayerID(i) then
-            table.insert(allPlayerIDs, i)
-        end
-    end
-
-    local this = self
-
-    function continueCachingHeroes()
-        --print('continue caching hero')
-
-        -- Any more to cache?
-        if #allPlayerIDs <= 0 then
-            donePrecaching = true
-
-            -- Tell clients
-            network:donePrecaching()
-
-            -- Check for ready
-            this:checkForReady()
-            return
-        end
-
-        local playerID = table.remove(allPlayerIDs, 1)
-
-        if PlayerResource:IsValidPlayerID(playerID) then
-            local heroName = self.selectedHeroes[playerID]
-
-            if heroName then
-                -- Store that it is cached
-                cachedPlayerHeroes[playerID] = true
-
-                --print('Caching ' .. heroName)
-
-                PrecacheUnitByNameAsync(heroName, function()
-                    -- Done caching
-                    Timers:CreateTimer(function()
-                        continueCachingHeroes()
-                    end, DoUniqueString('keepCaching'), timerDelay)
-                end, playerID)
-            else
-                Timers:CreateTimer(function()
-                    continueCachingHeroes()
-                end, DoUniqueString('keepCaching'), timerDelay)
-            end
-        else
-            Timers:CreateTimer(function()
-                continueCachingHeroes()
-            end, DoUniqueString('keepCaching'), timerDelay)
-        end
-    end
-
-    function continueCaching()
-        --print('Continue caching!')
-
-        Timers:CreateTimer(function()
-            if #allSkills > 0 then
-                local abName = table.remove(allSkills, 1)
-
-                --print('Precaching ' .. abName)
-
-                SkillManager:precacheSkill(abName, continueCaching)
-            else
-                Timers:CreateTimer(function()
-                    continueCachingHeroes()
-                end, DoUniqueString('keepCaching'), timerDelay)
-            end
-        end, DoUniqueString('keepCaching'), timerDelay)
-    end
-
-    continueCaching()
-end]]
-
-
-
 -- Validates builds
 function Pregame:validateBuilds()
     -- Only process this once
@@ -2693,13 +2599,18 @@ function Pregame:setOption(optionName, optionValue, force)
     end
 
     -- Set the option
-    self.optionStore[optionName] = optionValue
-    network:setOption(optionName, optionValue)
+    self:updateOption(optionName, optionValue)
 
     -- Check for option changing callbacks
     if self.onOptionsChanged[optionName] then
         self.onOptionsChanged[optionName](optionName, optionValue)
     end
+end
+
+-- Networks an options
+function Pregame:updateOption(optionName, optionValue)
+    self.optionStore[optionName] = optionValue
+    network:setOption(optionName, optionValue)
 end
 
 -- Bans an ability

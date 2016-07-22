@@ -62,7 +62,8 @@ var votingMenus = {
 						step: 1,
 						min: 0,
 						max: 100,
-						default: 100
+						default: 100,
+						linkTo: 'lodOptionGameSpeedRespawnTimePercentage'
 					},
 					{
 						title: 'votingOptionsRespawnTimeConstant',
@@ -73,7 +74,28 @@ var votingMenus = {
 						step: 1,
 						min: 0,
 						max: 120,
-						default: 0
+						default: 0,
+						linkTo: 'lodOptionGameSpeedRespawnTimeConstant'
+					}
+				]
+			},
+			{
+				title: 'votingOptionsGoldTickRate',
+				des: 'votingOptionsGoldTickRateDes',
+				confirmVote: true,
+				back: 'changeOptionsSpeed',
+				options: [
+					{
+						title: 'votingOptionsGoldTickRateAmount',
+						des: 'votingOptionsGoldTickRateAmountDes',
+
+						fieldName: 'amount',
+						sort: 'range',
+						step: 1,
+						min: 0,
+						max: 25,
+						default: 1,
+						linkTo: 'lodOptionGameSpeedGoldTickRate'
 					}
 				]
 			},

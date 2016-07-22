@@ -150,6 +150,37 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
             	-- Adjust the respawn times
             	OptionManager:SetOption('respawnModifierPercentage', percentage)
 	    		OptionManager:SetOption('respawnModifierConstant', constant)
+
+	    		-- Update options
+            	GameRules.pregame:updateOption('lodOptionGameSpeedRespawnTimePercentage', percentage)
+            	GameRules.pregame:updateOption('lodOptionGameSpeedRespawnTimeConstant', constant)
+        	end
+		end,
+
+		votingOptionsGoldTickRate = function()
+			-- Ensure we are in a match
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+			-- Ensure we have some valid vote data
+			local amount = voteData.amount
+
+			if type(amount) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(amount) ~= amount then return 'voteErrorInvalidData' end
+            if amount < 0 or amount > 25 then return 'voteErrorInvalidData' end
+
+            -- Add the description
+            theVote.voteDes = 'votingOptionsGoldTickRateAmountDesArgs'
+            theVote.voteDesArgs = {
+            	amount = amount
+        	}
+
+            -- Callback
+            theVote.callback = function()
+            	-- Change the tick rate
+            	GameRules:SetGoldPerTick(amount)
+
+            	-- Update options
+            	GameRules.pregame:updateOption('lodOptionGameSpeedGoldTickRate', amount)
         	end
 		end,
 

@@ -117,14 +117,20 @@ function votingAddRange(info, storeInto) {
 	// Grab the main panel
 	var panelVoteCreation = $('#votingVoteCreationMenu');
 
+	// Grab the default
+	var defaultValue = info.default;
+	if(info.linkTo && Game.shared.optionValueList[info.linkTo]) {
+		defaultValue = Game.shared.optionValueList[info.linkTo];
+	}
+
 	// Store the default value
-	storeInto[info.fieldName] = info.default;
+	storeInto[info.fieldName] = defaultValue;
 
 	// Create the new panel
 	var pan = $.CreatePanel('Panel', panelVoteCreation, 'votingSubMenu_' + info.title);
     pan.BLoadLayout('file://{resources}/layout/custom_game/ingame/ingame_voting_item_basic.xml', false, false);
     pan.parseInfo(info);
-    pan.addSliderInput(info.step, info.min, info.max, info.default, function(newValue) {
+    pan.addSliderInput(info.step, info.min, info.max, defaultValue, function(newValue) {
     	storeInto[info.fieldName] = newValue;
     });
 }

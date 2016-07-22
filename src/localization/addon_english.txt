@@ -518,6 +518,13 @@
     "votingOptionsRespawnTimeConstant"              "Additional Respawn Time"
     "votingOptionsRespawnTimeConstantDes"           "Adds a constant number of seconds onto the respawn time."
 
+    "votingOptionsGoldTickRate"                     "Gold Tick Rate"
+    "votingOptionsGoldRateDes"                      "Change the amount of gold that is gained every interval. The default in dota is 1 gold per interval."
+
+    "votingOptionsGoldTickRateAmount"               "Amount"
+    "votingOptionsGoldTickRateAmountDes"            "The amount of gold to give each internal."
+    "votingOptionsGoldTickRateAmountDesArgs"        "Change the gold given each internval to {amount}. Default is 1 gold per interval."
+
     "voteYes"                                       "Yes"
     "voteNo"                                        "No"
 

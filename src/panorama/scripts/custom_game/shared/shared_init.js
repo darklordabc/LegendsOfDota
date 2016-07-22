@@ -3,6 +3,9 @@
 // Cleanup our shared vars
 Game.shared = {};
 
+// Map of optionName -> Value
+Game.shared.optionValueList = {};
+
 // Hooks an events and fires for all the keys
 Game.shared.hookAndFire = function(tableName, callback) {
     // Listen for phase changing information

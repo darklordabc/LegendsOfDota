@@ -75,9 +75,6 @@ var lastOptionValues = {};
 // Map of optionName -> callback for value change
 var optionFieldMap = {};
 
-// Map of optionName -> Value
-var optionValueList = {};
-
 // Map of categories that are allowed to be picked from
 var allowedCategories = {};
 
@@ -284,7 +281,7 @@ function OnSelectedSkillsChanged(table_name, key, data) {
     selectedSkills[playerID] = data.skills;
 
     // Grab max slots
-    var maxSlots = optionValueList['lodOptionCommonMaxSlots'] || 6;
+    var maxSlots = Game.shared.optionValueList['lodOptionCommonMaxSlots'] || 6;
     var defaultSkill = 'life_stealer_empty_1';
 
     if(playerID == Players.GetLocalPlayer()) {
@@ -880,11 +877,11 @@ function highlightDropSlots() {
 
     // Count the number of ultimate abiltiies
     var theCount = 0;
-    var theMax = optionValueList['lodOptionCommonMaxUlts'];
+    var theMax = Game.shared.optionValueList['lodOptionCommonMaxUlts'];
     var isUlt = isUltimateAbility(currentSelectedSkill);
     var playerID = Players.GetLocalPlayer();
     if(!isUlt) {
-        theMax = optionValueList['lodOptionCommonMaxSkills'];
+        theMax = Game.shared.optionValueList['lodOptionCommonMaxSkills'];
     }
     var alreadyHas = false;
 
@@ -1574,7 +1571,7 @@ function getSkillFilterInfo(abilityName) {
 // Updates some of the filters ready for skill filtering
 function prepareFilterInfo() {
     // Check on unique skills mode
-    uniqueSkillsMode = optionValueList['lodOptionAdvancedUniqueSkills'] || 0;
+    uniqueSkillsMode = Game.shared.optionValueList['lodOptionAdvancedUniqueSkills'] || 0;
 
     // Grab what to search for
     searchParts = searchText.split(/\s/g);
@@ -2053,7 +2050,7 @@ function addPlayerToTeam(playerID, panel, reviewContainer, shouldMakeSmall) {
     }
 
     // Check max slots
-    var maxSlots = optionValueList['lodOptionCommonMaxSlots'];
+    var maxSlots = Game.shared.optionValueList['lodOptionCommonMaxSlots'];
     if(maxSlots != null) {
         newPlayerPanel.OnGetHeroSlotCount(maxSlots);
     }
@@ -2102,7 +2099,7 @@ function addPlayerToTeam(playerID, panel, reviewContainer, shouldMakeSmall) {
     newPlayerPanel.setShouldBeSmall(shouldMakeSmall);
 
     // Check max slots
-    var maxSlots = optionValueList['lodOptionCommonMaxSlots'];
+    var maxSlots = Game.shared.optionValueList['lodOptionCommonMaxSlots'];
     if(maxSlots != null) {
         newPlayerPanel.OnGetHeroSlotCount(maxSlots);
     }
@@ -2843,7 +2840,7 @@ function OnPhaseChanged(table_name, key, data) {
 // An option just changed
 function OnOptionChanged(table_name, key, data) {
     // Store new value
-    optionValueList[key] = data.v;
+    Game.shared.optionValueList[key] = data.v;
 
     // Check if there is a mapping function available
     if(optionFieldMap[key]) {
@@ -2891,11 +2888,11 @@ function OnOptionChanged(table_name, key, data) {
     }
 
     if(key == 'lodOptionAdvancedUniqueSkills') {
-        $('#mainSelectionRoot').SetHasClass('unique_skills_mode', optionValueList['lodOptionAdvancedUniqueSkills'] > 0);
+        $('#mainSelectionRoot').SetHasClass('unique_skills_mode', Game.shared.optionValueList['lodOptionAdvancedUniqueSkills'] > 0);
     }
 
     if(key == 'lodOptionAdvancedUniqueHeroes') {
-        $('#mainSelectionRoot').SetHasClass('unique_heroes_mode', optionValueList['lodOptionAdvancedUniqueHeroes'] == 1);
+        $('#mainSelectionRoot').SetHasClass('unique_heroes_mode', Game.shared.optionValueList['lodOptionAdvancedUniqueHeroes'] == 1);
     }
 
     if(key == 'lodOptionCommonGamemode') {
@@ -2911,9 +2908,9 @@ function OnOptionChanged(table_name, key, data) {
 
 // Recalculates how many abilities / heroes we can ban
 function recalculateBanLimits() {
-    var maxHeroBans = optionValueList['lodOptionBanningMaxHeroBans'] || 0;
-    var maxAbilityBans = optionValueList['lodOptionBanningMaxBans'] || 0;
-    var hostBanning = optionValueList['lodOptionBanningHostBanning'] || 0;
+    var maxHeroBans = Game.shared.optionValueList['lodOptionBanningMaxHeroBans'] || 0;
+    var maxAbilityBans = Game.shared.optionValueList['lodOptionBanningMaxBans'] || 0;
+    var hostBanning = Game.shared.optionValueList['lodOptionBanningHostBanning'] || 0;
 
     // Is host banning enabled, and we are the host?
     if(hostBanning && isHost()) {
@@ -2995,7 +2992,7 @@ function calculateHideEnemyPicks() {
 
 // The gamemode has changed
 function onGamemodeChanged() {
-    var theGamemode = optionValueList['lodOptionCommonGamemode'];
+    var theGamemode = Game.shared.optionValueList['lodOptionCommonGamemode'];
 
     var noHeroSelection = false;
 
@@ -3013,9 +3010,9 @@ function onGamemodeChanged() {
 
 // Max number of bans has changed
 function onMaxBansChanged() {
-    var maxBans = optionValueList['lodOptionBanningMaxBans'];
-    var maxHeroBans = optionValueList['lodOptionBanningMaxHeroBans'];
-    var hostBanning = optionValueList['lodOptionBanningHostBanning'];
+    var maxBans = Game.shared.optionValueList['lodOptionBanningMaxBans'];
+    var maxHeroBans = Game.shared.optionValueList['lodOptionBanningMaxHeroBans'];
+    var hostBanning = Game.shared.optionValueList['lodOptionBanningHostBanning'];
 
     // Hide / show the banning phase button
     if(maxBans != null && maxHeroBans != null && hostBanning != null) {
@@ -3029,9 +3026,9 @@ function onMaxBansChanged() {
 
 // The max number of slots / ults / regular abs has changed!
 function onMaxSlotsChanged() {
-    var maxSlots = optionValueList['lodOptionCommonMaxSlots'];
-    var maxSkills = optionValueList['lodOptionCommonMaxSkills'];
-    var maxUlts = optionValueList['lodOptionCommonMaxUlts'];
+    var maxSlots = Game.shared.optionValueList['lodOptionCommonMaxSlots'];
+    var maxSkills = Game.shared.optionValueList['lodOptionCommonMaxSkills'];
+    var maxUlts = Game.shared.optionValueList['lodOptionCommonMaxUlts'];
 
     // Ensure all variables are defined
     if(maxSlots == null || maxSkills == null || maxUlts == null) return;
@@ -3067,23 +3064,23 @@ function onAllowedCategoriesChanged() {
     // Reset the allowed categories
     allowedCategories = {};
 
-    if(optionValueList['lodOptionAdvancedHeroAbilities'] == 1) {
+    if(Game.shared.optionValueList['lodOptionAdvancedHeroAbilities'] == 1) {
         allowedCategories['main'] = true;
     }
 
-    if(optionValueList['lodOptionAdvancedNeutralAbilities'] == 1) {
+    if(Game.shared.optionValueList['lodOptionAdvancedNeutralAbilities'] == 1) {
         allowedCategories['neutral'] = true;
     }
 
-    //if(optionValueList['lodOptionAdvancedNeutralWraithNight'] == 1) {
+    //if(Game.shared.optionValueList['lodOptionAdvancedNeutralWraithNight'] == 1) {
     //    allowedCategories['wraith'] = true;
     //}
 
-    if(optionValueList['lodOptionAdvancedCustomSkills'] == 1) {
+    if(Game.shared.optionValueList['lodOptionAdvancedCustomSkills'] == 1) {
         allowedCategories['custom'] = true;
     }
 
-    if(optionValueList['lodOptionAdvancedOPAbilities'] == 1) {
+    if(Game.shared.optionValueList['lodOptionAdvancedOPAbilities'] == 1) {
         allowedCategories['OP'] = true;
     }
 
@@ -3347,10 +3344,10 @@ function onPlayerCastVote(category, choice) {
 
 // Export options
 function onExportOptionsPressed() {
-    //$.Msg(optionValueList)
-    //$.Msg(JSON.stringify(optionValueList));
+    //$.Msg(Game.shared.optionValueList)
+    //$.Msg(JSON.stringify(Game.shared.optionValueList));
 
-    $('#optionImporterEntry').text = JSON.stringify(optionValueList).replace(/,/g, ',\n');
+    $('#optionImporterEntry').text = JSON.stringify(Game.shared.optionValueList).replace(/,/g, ',\n');
 
     setImportError('exportSuccess', true);
 }
