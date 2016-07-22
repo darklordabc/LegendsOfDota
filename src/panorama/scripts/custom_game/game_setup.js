@@ -160,77 +160,6 @@ function addNotification(options) {
     });
 }
 
-// Hooks a change event
-function addInputChangedEvent(panel, callback) {
-    var shouldListen = false;
-    var checkRate = 0.25;
-    var currentString = panel.text;
-
-    var inputChangedLoop = function() {
-        // Check for a change
-        if(currentString != panel.text) {
-            // Update current string
-            currentString = panel.text;
-
-            // Run the callback
-            callback(panel, currentString);
-        }
-
-        if(shouldListen) {
-            $.Schedule(checkRate, inputChangedLoop);
-        }
-    }
-
-    panel.SetPanelEvent('onfocus', function() {
-        // Enable listening, and monitor the field
-        shouldListen = true;
-        inputChangedLoop();
-    });
-
-    panel.SetPanelEvent('onblur', function() {
-        // No longer listen
-        shouldListen = false;
-    });
-}
-
-function hookSliderChange(panel, callback, onComplete) {
-    var shouldListen = false;
-    var checkRate = 0.03;
-    var currentValue = panel.value;
-
-    var inputChangedLoop = function() {
-        // Check for a change
-        if(currentValue != panel.value) {
-            // Update current string
-            currentValue = panel.value;
-
-            // Run the callback
-            callback(panel, currentValue);
-        }
-
-        if(shouldListen) {
-            $.Schedule(checkRate, inputChangedLoop);
-        }
-    }
-
-    panel.SetPanelEvent('onmouseover', function() {
-        // Enable listening, and monitor the field
-        shouldListen = true;
-        inputChangedLoop();
-    });
-
-    panel.SetPanelEvent('onmouseout', function() {
-        // No longer listen
-        shouldListen = false;
-
-        // Check the value once more
-        inputChangedLoop();
-
-        // When we complete
-        onComplete(panel, currentValue);
-    });
-}
-
 // Hooks a tab change
 function hookTabChange(tabName, callback) {
     onLoadTabHook[tabName] = callback;
@@ -1441,7 +1370,7 @@ function OnHeroTabShown(tabName) {
         }
 
         // Hook searchbox
-        addInputChangedEvent($('#lodHeroSearchInput'), function(panel, newValue) {
+        Game.shared.addInputChangedEvent($('#lodHeroSearchInput'), function(newValue) {
             // Store the new text
             heroSearchText = newValue.toLowerCase();
 
@@ -1890,7 +1819,7 @@ function OnSkillTabShown(tabName) {
         }
 
         // Hook searchbox
-        addInputChangedEvent($('#lodSkillSearchInput'), function(panel, newValue) {
+        Game.shared.addInputChangedEvent($('#lodSkillSearchInput'), function(newValue) {
             // Store the new text
             searchText = newValue.toLowerCase();
 
@@ -2410,84 +2339,21 @@ function buildOptionsCategories() {
                         case 'range':
                             // Create the Container
                             hostPanel = $.CreatePanel('Panel', floatRightContiner, 'option_panel_field_' + fieldName);
-                            hostPanel.BLoadLayout('file://{resources}/layout/custom_game/slider.xml', false, false);
+                            hostPanel.BLoadLayout('file://{resources}/layout/custom_game/shared/ui/slider.xml', false, false);
                             hostPanel.AddClass('optionsSlotPanelHost');
 
-                            var sliderStep = info.step;
-                            var sliderMin = info.min;
-                            var sliderMax = info.max;
-                            var sliderDefault = info.default;
-
-                            var sliderPanel = hostPanel.FindChildInLayoutFile('slider');
-                            sliderPanel.min = sliderMin;
-                            sliderPanel.max = sliderMax;
-                            sliderPanel.increment = sliderStep;
-                            sliderPanel.value = sliderDefault;
-                            sliderPanel.SetShowDefaultValue(true);
-
-                            var onGetNewSliderValue = function(newValue, shouldNetwork, ignoreSlider, ignoreText) {
-                                // Validate the new value
-                                newValue = Math.floor(newValue / sliderStep) * sliderStep;
-
-                                if(newValue < sliderMin) {
-                                    newValue = sliderMin;
-                                }
-
-                                if(newValue > sliderMax) {
-                                    newValue = sliderMax;
-                                }
-
-                                // Update Slider Position
-                                if(!ignoreSlider) {
-                                    sliderPanel.value = newValue;
-                                }
-
-                                // Update text value
-                                if(!ignoreText) {
-                                    inputValuePanel.text = newValue;
-                                }
-
-                                // Update slave text
-                                slavePanel.text = newValue;
-
-                                // Should we network it?
-                                if(shouldNetwork) {
-                                    // Set it
-                                    setOption(fieldName, newValue);
-                                }
-                            }
-
-                            hookSliderChange(sliderPanel, function(panel, newValue) {
-                                onGetNewSliderValue(newValue, false, true, false);
-                            }, function(panel, newValue) {
-                                onGetNewSliderValue(newValue, true, true, false);
+                            // When the value is changed
+                            hostPanel.onComplete(function(newValue) {
+                                setOption(fieldName, newValue);
                             });
 
-                            var inputValuePanel = hostPanel.FindChildInLayoutFile('entry');
-                            inputValuePanel.text = sliderDefault;
+                            // Init
+                            hostPanel.initSlider(info.step, info.min, info.max, info.default);
 
-                            addInputChangedEvent(inputValuePanel, function(panel, newValue) {
-                                newValue = parseInt(newValue);
-                                if(isNaN(newValue)) {
-                                    newValue = sliderMin;
-                                }
-
-                                onGetNewSliderValue(newValue, false, false, true);
-                            });
-
-                            inputValuePanel.SetPanelEvent('onblur', function() {
-                                var newValue = inputValuePanel.text;
-
-                                newValue = parseInt(newValue);
-                                if(isNaN(newValue)) {
-                                    newValue = sliderMin;
-                                }
-
-                                onGetNewSliderValue(newValue, true);
-                            });
-
+                            // When the option changes, update the slider
                             optionFieldMap[fieldName] = function(newValue) {
-                                onGetNewSliderValue(newValue, false);
+                                hostPanel.setCurrentValue(newValue);
+                                slavePanel.text = newValue;
                             }
                         break;
 

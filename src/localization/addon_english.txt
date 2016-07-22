@@ -486,6 +486,9 @@
     "votingGiveupCallDraw"                          "Call match a draw"
     "votingGiveupCallDrawDes"                       "Makes the match a draw, neither team wins or loses, and the match will end."
 
+    "votingGameplayAddGold"                         "Give Gold"
+    "votingGameplayAddGoldDes"                      "Gives every player in the match the specified amount of gold."
+
     "voteYes"                                       "Yes"
     "voteNo"                                        "No"
 

@@ -11,6 +11,8 @@
 		<Panel class="votingVoteCreationItemText">
 			<Label id="votingItemTitle" class="votingVoteCreationLabelTitle" />
 			<Label id="votingItemDes" />
+
+			<Panel id="votingItemSlider" />
 		</Panel>
 
 		<Panel class="votingVoteCreationItemIcon" />
