@@ -31,7 +31,13 @@ var votingMenus = {
 				title: 'votingGoBack',
 				des: 'votingGoBackDes',
 				link: 'mainMenu'
-			}
+			},
+			{
+				title: 'votingBalanceTeamsSwapSelf',
+				des: 'votingBalanceTeamsSwapSelfDes',
+				confirmVote: true,
+				back: 'balanceTeams'
+			},
 		]
 	},
 	gameplay: {

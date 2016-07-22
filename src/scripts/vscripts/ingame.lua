@@ -39,7 +39,7 @@ function Ingame:init()
     end)
 
     -- Set it to no team balance
-    self:setNoTeamBalanceNeeded()
+    --self:setNoTeamBalanceNeeded()
 end
 
 -- Called when the game starts
@@ -47,7 +47,7 @@ function Ingame:onStart()
     local this = self
 
     -- Start listening for players that are disconnecting
-    ListenToGameEvent('player_disconnect', function(keys)
+    --[[ListenToGameEvent('player_disconnect', function(keys)
         this:checkBalanceTeamsNextTick()
     end, nil)
 
@@ -58,7 +58,7 @@ function Ingame:onStart()
 
     ListenToGameEvent('player_connect_full', function(keys)
         this:checkBalanceTeamsNextTick()
-    end, nil)
+    end, nil)]]
 
     -- Init voting system
     lodVoting:init()
@@ -100,7 +100,7 @@ function Ingame:balancePlayer(playerID, newTeam)
     end
 end
 
--- Sets it to no team balancing is required
+--[[-- Sets it to no team balancing is required
 function Ingame:setNoTeamBalanceNeeded()
     -- Store state informatiion about team balance
     self.needsTeamBalance = false
@@ -185,7 +185,7 @@ function Ingame:checkBalanceTeams()
         -- Can't balance
         self:setNoTeamBalanceNeeded()
     end
-end
+end]]
 
 -- Buyback cooldowns
 function Ingame:handleBuybackCooldowns()

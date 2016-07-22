@@ -112,7 +112,8 @@ end
 -- Checks if a given vote is valid
 function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 	-- Grab the players team
-	local plyTeam = PlayerResource:GetCustomTeamAssignment(theVote.playerID)
+	local playerID = theVote.playerID
+	local plyTeam = PlayerResource:GetCustomTeamAssignment(playerID)
 
 	local this = self
 
@@ -177,6 +178,49 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
             		end
             	end
         	end
+		end,
+
+		--[[
+			BALANCE TEAMS
+		]]
+
+		-- Swapping yourself onto another team
+		votingBalanceTeamsSwapSelf = function()
+			-- Ensure we are in a match
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+			-- Check number of players on other team
+			local enemyTeam = DOTA_TEAM_BADGUYS
+			if plyTeam == DOTA_TEAM_BADGUYS then
+				enemyTeam = DOTA_TEAM_GOODGUYS
+			end
+
+			local totalEnemies = 0
+			local maxPlayers = 24
+			for i=0,maxPlayers-1 do
+				local state = PlayerResource:GetConnectionState(i)
+
+				-- Are they are bot, or a CONNECTED player?
+				if state == 1 or state == 2 then
+					if PlayerResource:GetCustomTeamAssignment(i) == enemyTeam then
+						totalEnemies = totalEnemies + 1
+					end
+				end
+			end
+
+			if totalEnemies >= DOTA_MAX_TEAM_PLAYERS then
+				return 'voteErrorNoPlayerSlots'
+			end
+
+			theVote.voteDes = 'votingBalanceTeamsSwapSelfDesArgs'
+
+			theVote.voteDesArgs = {
+				plyName = PlayerResource:GetPlayerName(playerID)
+			}
+
+			theVote.callback = function()
+				GameRules.ingame:balancePlayer(playerID, enemyTeam)
+			end
 		end,
 
 		--[[

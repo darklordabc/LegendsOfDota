@@ -181,9 +181,9 @@ function Network:setPremiumInfo(info)
 end
 
 -- Balance request
-function Network:setTeamBalanceData(info)
+--[[function Network:setTeamBalanceData(info)
     CustomNetTables:SetTableValue('phase_ingame', 'balance_data', info)
-end
+end]]
 
 -- Gameplay Stats
 function Network:sharePlayerStats(stats)

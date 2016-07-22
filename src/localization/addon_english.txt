@@ -500,6 +500,11 @@
     "votingGameplayAddXPAmount"                     "Amount"
     "votingGameplayAddXPAmountDes"                  "The amount of experience to give to each hero."
 
+    "votingBalanceTeamsSwapSelf"                    "Swap Player Teams"
+    "votingBalanceTeamsSwapSelfDes"                 "Swap you onto the other team."
+
+    "votingBalanceTeamsSwapSelfDesArgs"             "Swap '{plyName}' onto the other team?"
+
     "voteYes"                                       "Yes"
     "voteNo"                                        "No"
 
@@ -519,6 +524,8 @@
     "voteErrorNotInMatch"                           "This vote can only be created once everyone has spawned."
     "voteErrorPregame"                              "This vote can only be created after pregame ended."
     "voteErrorUnknownVote"                          "The tried to create an unknwon vote."
+
+    "voteErrorNoPlayerSlots"                        "There are not enough player slots to do this."
 
     /////////////////
     // UNIQUE HERO MECHANICS
