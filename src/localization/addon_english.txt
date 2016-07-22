@@ -466,10 +466,10 @@
     "votingBalanceTeamsDes"                         "Create a vote to balance teams, change teams and add bots."
 
     "votingGameplay"                                "Gameplay"
-    "votingGameplayDes"                             "Create a vote to change up the gameplay, adding gold, experience and changing the map."
+    "votingGameplayDes"                             "Create a vote to change up the gameplay, add gold, experience and modify the map."
 
     "votingGiveup"                                  "Surrender"
-    "votingGiveupDes"                               "Create a vote to end the game, surrendering or calling it a draw."
+    "votingGiveupDes"                               "Create a vote to end the game, surrender or call it a draw."
 
     "votingGoBack"                                  "Go Back"
     "votingGoBackDes"                               "Go back the the previous menu."
@@ -481,13 +481,17 @@
     "votingCreateVoteDes"                           "Create the vote."
 
     "votingGiveupCallGG"                            "Call GG"
-    "votingGiveupCallGGDes"                         "Surrender, making your team lose, calling GG."
+    "votingGiveupCallGGDes"                         "Surrender, make your team lose, call GG."
 
     "votingGiveupCallDraw"                          "Call match a draw"
-    "votingGiveupCallDrawDes"                       "Makes the match a draw, neither team wins or loses, and the match will end."
+    "votingGiveupCallDrawDes"                       "Make the match a draw, neither team wins or loses, and the match will end."
 
     "votingGameplayAddGold"                         "Give Gold"
-    "votingGameplayAddGoldDes"                      "Gives every player in the match the specified amount of gold."
+    "votingGameplayAddGoldDes"                      "Give every player in the match the specified amount of gold."
+    "votingGameplayAddGoldDesArgs"                  "Give every player {amount} gold."
+
+    "votingGameplayAddGoldAmount"                   "Amount"
+    "votingGameplayAddGoldAmountDes"                "The amount of gold to give to each player."
 
     "voteYes"                                       "Yes"
     "voteNo"                                        "No"
@@ -498,6 +502,16 @@
     "lodVoteFailed"                                 "Vote has failed!"
 
     "voteCreatedBy"                                 "Vote created by {plyName}"
+
+    "votingErrorVoteInProgress"                     "There is already a vote in progress."
+    "votingErrorVoteFailedVote"                     "Please wait {timeLeft} second(s) before making another vote."
+    "votingErrorVoteInvalid"                        "There was an error creating your vote: {error}"
+    "votingMessageVoteCreated"                      "The vote was successfully created!"
+
+    "voteErrorInvalidData"                          "One of the value(s) you entered was invalid."
+    "voteErrorNotInMatch"                           "This vote can only be created once everyone has spawned."
+    "voteErrorPregame"                              "This vote can only be created after pregame ended."
+    "voteErrorUnknownVote"                          "The tried to create an unknwon vote."
 
     /////////////////
     // UNIQUE HERO MECHANICS

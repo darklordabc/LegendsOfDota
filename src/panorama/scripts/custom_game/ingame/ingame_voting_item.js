@@ -35,6 +35,21 @@ function onVoteOptionPressed() {
 	}
 }
 
+function addSliderInput(sliderStep, sliderMin, sliderMax, sliderDefault, callback) {
+	var con = $('#votingItemSlider');
+
+	var sliderPanelCon = $.CreatePanel('Panel', con, 'votingItemSliderInside');
+	sliderPanelCon.BLoadLayout('file://{resources}/layout/custom_game/shared/ui/slider.xml', false, false);
+
+	// When the value is changed
+    sliderPanelCon.onComplete(function(newValue) {
+        callback(newValue);
+    });
+
+    // Init
+    sliderPanelCon.initSlider(sliderStep, sliderMin, sliderMax, sliderDefault);
+}
+
 // Do stuff
 (function() {
 	// Grab the main panel
@@ -42,4 +57,5 @@ function onVoteOptionPressed() {
 
     // Define exports
     mainPanel.parseInfo = parseInfo;
+    mainPanel.addSliderInput = addSliderInput;
 })();

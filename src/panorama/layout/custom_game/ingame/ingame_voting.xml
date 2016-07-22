@@ -3,11 +3,14 @@
         <include src="s2r://panorama/styles/dotastyles.vcss_c" />
         <include src="s2r://panorama/styles/play.vcss_c" />
         <include src="file://{resources}/styles/custom_game/ingame/ingame_voting.css" />
+        <include src="file://{resources}/styles/custom_game/shared/notifications.css" />
     </styles>
     <scripts>
         <include src="file://{resources}/scripts/custom_game/ingame/ingame_voting.js" />
     </scripts>
     <Panel class="rootVotingPanel" hittest="false">
+    	<Panel id="lodNotificationArea" />
+
     	<Panel class="votingTopMenu">
     		<Button class="niceButton" onactivate="onBtnOpenVoteSystemPressed()" hittest="true">
                 <Label text="openVoteSystem" />
@@ -18,9 +21,9 @@
 
     	<Panel id="votingActiveVote">
     		<Panel id="votingActiveVoteInfo">
-	    		<Label id="voteTitle" text="test" />
-	    		<Label id="voteDes" text="test134" />
-	    		<Label id="votesRequired" text="votes required to pass" />
+	    		<Label id="voteTitle" />
+	    		<Label id="voteDes" />
+	    		<Label id="votesRequired" />
 	    		<Label id="voteBy" />
 	    		<Panel id="voteOptionsContainer">
 	    			<Button class="niceButton" onactivate="onBtnOpenVoteYesPressed()" hittest="true">
@@ -35,12 +38,12 @@
 	    		<Panel id="lodVoteCountContainer">
 	    			<Panel class="lodVoteCountContainerSub">
 	    				<Label text="Yes" />
-	    				<Label id="lodVoteCountYes" text="1" />
+	    				<Label id="lodVoteCountYes" />
 	    			</Panel>
 
 	    			<Panel class="lodVoteCountContainerSub">
 	    				<Label text="No" />
-	    				<Label id="lodVoteCountNo" text="10" />
+	    				<Label id="lodVoteCountNo" />
 	    			</Panel>
 	    		</Panel>
 	    		<Label id="lodVotePassed" text="lodVotePassed" />

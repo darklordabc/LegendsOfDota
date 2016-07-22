@@ -6,6 +6,7 @@ local network = require('network')
 -- Options
 local maxVoteDuration = 30			-- How long a vote lasts for
 local voteShowTimeAfterFinished = 5	-- How long to show the vote for after the vote finishes
+local failedVoteWaitPeriod = 120	-- How long a player has to wait if their current vote fails
 
 -- Define the clas
 local lodVoting = class({})
@@ -62,7 +63,7 @@ function lodVoting:onPlyVoteCreate(eventSourceIndex, args)
 	    		sort = 'lodDanger',
 	    		text = 'votingErrorVoteFailedVote',
 	    		params = {
-	            	['timeLeft'] = timeLeft
+	            	['timeLeft'] = math.ceil(timeLeft)
 	        	}
 	    	})
 	    	return
@@ -85,11 +86,15 @@ function lodVoting:onPlyVoteCreate(eventSourceIndex, args)
 	}
 
 	-- Check vote info
-	if self:checkVoteOptions(theVote, voteInfo, voteData) then
+	local res = self:checkVoteOptions(theVote, voteInfo, voteData)
+	if res then
 		-- Tell the player
     	notifications:send(ply, {
     		sort = 'lodDanger',
-    		text = 'votingErrorVoteInvalid'
+    		text = 'votingErrorVoteInvalid',
+    		params = {
+    			['error'] = res
+    		}
     	})
     	return
 	end
@@ -112,11 +117,46 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 	local this = self
 
 	local votingPrepare = {
+		--[[
+			GAMEPLAY
+		]]
+
+		votingGameplayAddGold = function()
+			-- Ensure we are in a match
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+			-- Ensure we have some valid vote data
+			local amount = voteData.amount
+
+			if type(amount) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(amount) ~= amount then return 'voteErrorInvalidData' end
+            if amount < 1 or amount > 100000 then return 'voteErrorInvalidData' end
+
+            -- Add the description
+            theVote.voteDes = 'votingGameplayAddGoldDesArgs'
+            theVote.voteDesArgs = {
+            	amount = amount
+        	}
+
+            -- Callback
+            theVote.callback = function()
+            	-- Allocate the extra gold
+            	local maxPlayers = 24
+            	for i=0,maxPlayers-1 do
+            		PlayerResource:SetGold(i, PlayerResource:GetReliableGold(i) + amount, true)
+            	end
+        	end
+		end,
+
+		--[[
+			GIVING UP
+		]]
+
 		-- Calling GG
 		votingGiveupCallGG = function()
 			-- Are we pregame?
 			if GameRules:State_Get() < DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-				return true
+				return 'voteErrorPregame'
 			end
 
 			-- Team only vote
@@ -136,7 +176,7 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 		votingGiveupCallDraw = function()
 			-- Are we pregame?
 			if GameRules:State_Get() < DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-				return true
+				return 'voteErrorPregame'
 			end
 
 			-- Add the description
@@ -152,12 +192,13 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 
 	-- Ensure it is has a callback
 	if not votingPrepare[theVote.voteTitle] then
-		return true
+		return 'voteErrorUnknownVote'
 	end
 
 	-- Prepare the vote
-	if votingPrepare[theVote.voteTitle]() then
-		return true
+	local res = votingPrepare[theVote.voteTitle]()
+	if res then
+		return res
 	end
 end
 
@@ -191,8 +232,8 @@ function lodVoting:createVote(activeVoteInfo)
     end, DoUniqueString('createVote'), activeVoteInfo.voteDuration)
 
     -- Casts our vote
-    self.activeVoteInfo.plyVotes[self.activeVoteInfo.playerID] = true
-    self.activeVoteInfo.totalYes = self.activeVoteInfo.totalYes + 1
+    --self.activeVoteInfo.plyVotes[self.activeVoteInfo.playerID] = true
+    --self.activeVoteInfo.totalYes = self.activeVoteInfo.totalYes + 1
 
     -- Check the progress of the vote
     self:checkVoteProgress()
@@ -272,6 +313,9 @@ function lodVoting:endVote()
 		if callback then
 			callback(self.activeVoteInfo)
 		end
+	else
+		-- Stop the player from making another vote anytime soon
+		self.lastVotes[self.activeVoteInfo.playerID] = Time()
 	end
 end
 

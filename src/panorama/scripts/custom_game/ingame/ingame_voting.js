@@ -1,78 +1,5 @@
 "use strict";
 
-// Stores all the voting menus
-var votingMenus = {
-	// The main voting menu
-	mainMenu: {
-		items: [
-			{
-				title: 'votingChangeOptions',
-				des: 'votingChangeOptionsDes'
-			},
-			{
-				title: 'votingBalanceTeams',
-				des: 'votingBalanceTeamsDes',
-				link: 'balanceTeams'
-			},
-			{
-				title: 'votingGameplay',
-				des: 'votingGameplayDes',
-				link: 'gameplay'
-			},
-			{
-				title: 'votingGiveup',
-				des: 'votingGiveupDes',
-				link: 'giveup'
-			}
-		]
-	},
-	balanceTeams: {
-		items: [
-			{
-				title: 'votingGoBack',
-				des: 'votingGoBackDes',
-				link: 'mainMenu'
-			}
-		]
-	},
-	gameplay: {
-		items: [
-			{
-				title: 'votingGoBack',
-				des: 'votingGoBackDes',
-				link: 'mainMenu'
-			},
-			{
-				title: 'votingGameplayAddGold',
-				des: 'votingGameplayAddGoldDes',
-				confirmVote: true,
-				back: 'gameplay'
-			},
-		]
-	},
-	giveup: {
-		items: [
-			{
-				title: 'votingGoBack',
-				des: 'votingGoBackDes',
-				link: 'mainMenu'
-			},
-			{
-				title: 'votingGiveupCallGG',
-				des: 'votingGiveupCallGGDes',
-				confirmVote: true,
-				back: 'giveup'
-			},
-			{
-				title: 'votingGiveupCallDraw',
-				des: 'votingGiveupCallDrawDes',
-				confirmVote: true,
-				back: 'giveup'
-			}
-		]
-	}
-};
-
 // The ID of a vote we have hidden
 var hiddenVote;
 var activeVoteData;
@@ -95,8 +22,6 @@ function showActiveVoteOptions() {
 
 // When the user presses vote yes
 function onBtnOpenVoteYesPressed() {
-	$.Msg('yes');
-
 	// Hide the voting buttons
 	hideActiveVoteOptions();
 
@@ -108,8 +33,6 @@ function onBtnOpenVoteYesPressed() {
 
 // When the user presses vote no
 function onBtnOpenVoteNoPressed() {
-	$.Msg('no');
-
 	// Hide the voting buttons
 	hideActiveVoteOptions();
 
@@ -167,7 +90,7 @@ function votingAddSubMenu(info) {
 // Displays a given menu
 function votingDisplayMenu(menuName) {
 	// Ensure the menu exists
-	var info = votingMenus[menuName];
+	var info = Game.shared.votingMenus[menuName];
 	if(!info) return;
 
 	// Clear the current menu
@@ -184,6 +107,23 @@ function votingDisplayMenu(menuName) {
 		// Add the sub menu
 		votingAddSubMenu(item);
 	}
+}
+
+// Add a voting range
+function votingAddRange(info, storeInto) {
+	// Grab the main panel
+	var panelVoteCreation = $('#votingVoteCreationMenu');
+
+	// Store the default value
+	storeInto[info.fieldName] = info.default;
+
+	// Create the new panel
+	var pan = $.CreatePanel('Panel', panelVoteCreation, 'votingSubMenu_' + info.title);
+    pan.BLoadLayout('file://{resources}/layout/custom_game/ingame/ingame_voting_item_basic.xml', false, false);
+    pan.parseInfo(info);
+    pan.addSliderInput(info.step, info.min, info.max, info.default, function(newValue) {
+    	storeInto[info.fieldName] = newValue;
+    });
 }
 
 // Displays a menu where you confirm a vote
@@ -207,13 +147,29 @@ function votingConfirmVote(info) {
 		des: info.des
 	});
 
+	// A store for data
+	var data = {};
+
+	// Add any options
+	if(info.options) {
+		for(var i=0; i<info.options.length; ++i) {
+			var opt = info.options[i];
+
+			switch(opt.sort) {
+				case 'range':
+					votingAddRange(opt, data);
+				break;
+			}
+		}
+	}
+
 	// Add the create vote option
 	votingAddSubMenu({
 		title: 'votingCreateVote',
 		des: 'votingCreateVoteDes',
 		callback: function(theInfo) {
 			// Create the vote
-			createVote(info);
+			createVote(info, data);
 		}
 	});
 }
@@ -287,7 +243,15 @@ function OnGetVoteData(table_name, key, data) {
 	// Update description
 	$('#voteDes').text = '';
 	if(data.voteDes != null) {
-		$('#voteDes').text = $.Localize(data.voteDes);
+		var voteDes = $.Localize(data.voteDes);
+
+		if(data.voteDesArgs != null) {
+			for(var key in data.voteDesArgs) {
+				voteDes = voteDes.replace(new RegExp('\\{' + key + '\\}', 'g'), $.Localize(data.voteDesArgs[key]));
+			}
+		}
+
+		$('#voteDes').text = voteDes;
 	}
 
 	// Show it
@@ -337,6 +301,8 @@ function closeActiveVotePanel() {
 	// Hook vote changes
 	Game.shared.hookAndFire('phase_ingame', OnGetIngameData);
 
-	// Show the main voting menu
-	votingDisplayMenu('mainMenu');
+	// Listen for notifications
+    GameEvents.Subscribe('lodNotification', function(data) {
+        Game.shared.addNotification($('#lodNotificationArea'), data);
+    });
 })();

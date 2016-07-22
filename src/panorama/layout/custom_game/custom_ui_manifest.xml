@@ -19,6 +19,7 @@
         <include src="file://{resources}/scripts/custom_game/shared/shared_init.js" />
         <include src="file://{resources}/scripts/custom_game/shared/shared_options.js" />
         <include src="file://{resources}/scripts/custom_game/shared/shared_builds.js" />
+        <include src="file://{resources}/scripts/custom_game/shared/shared_voting.js" />
     </scripts>
 
 	<Panel>

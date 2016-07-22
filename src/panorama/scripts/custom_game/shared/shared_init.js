@@ -56,3 +56,44 @@ Game.shared.addInputChangedEvent = function(panel, callback, extraInfo) {
         if(extraInfo.onblur) extraInfo.onblur();
     });
 }
+
+// Adds a notification
+var notifcationTotal = 0;
+Game.shared.addNotification = function(notificationRoot, options) {
+    // Grab useful stuff
+    var notificationID = ++notifcationTotal;
+
+    options = options || {};
+    var text = options.text || '';
+    var params = options.params || [];
+    var sort = options.sort || 'lodInfo';
+    var duration = options.duration || 5;
+
+    var realText = $.Localize(text);
+    for(var key in params) {
+        var toAdd = $.Localize(params[key]);
+
+        realText = realText.replace(new RegExp('\\{' + key + '\\}', 'g'), toAdd);
+    }
+
+
+    // Create the panel
+    var notificationPanel = $.CreatePanel('Panel', notificationRoot, 'notification_' + notificationID);
+    var textContainer = $.CreatePanel('Label', notificationPanel, 'notification_text_' + notificationID);
+
+    // Push the style and text
+    notificationPanel.AddClass('lodNotification');
+    notificationPanel.AddClass('lodNotificationLoading');
+    notificationPanel.AddClass(sort);
+    textContainer.text = realText;
+
+    // Delete it after a bit
+    $.Schedule(duration, function() {
+        notificationPanel.RemoveClass('lodNotificationLoading');
+        notificationPanel.AddClass('lodNotificationRemoving');
+
+        $.Schedule(0.5, function() {
+            notificationPanel.DeleteAsync(0);
+        });
+    });
+}

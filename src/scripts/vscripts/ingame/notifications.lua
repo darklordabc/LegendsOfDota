@@ -1,8 +1,10 @@
+local network = require('network')
+
 -- Create the class
 local notifications = class({})
 
 function notifications:send(ply, data)
-	print(data)
+	network:sendNotification(ply, data)
 end
 
 -- Define the export

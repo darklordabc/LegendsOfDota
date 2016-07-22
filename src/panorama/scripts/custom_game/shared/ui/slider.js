@@ -20,11 +20,16 @@ function initSlider(newSliderStep, newSliderMin, newSliderMax, newSliderDefault)
 	// Update the slider
 	var mainCon = $.GetContextPanel();
 	var sliderPanel = mainCon.FindChildInLayoutFile('slider');
+	var textPanel = mainCon.FindChildInLayoutFile('entry');
+
     sliderPanel.min = sliderMin;
     sliderPanel.max = sliderMax;
     sliderPanel.increment = sliderStep;
     sliderPanel.value = sliderDefault;
     sliderPanel.SetShowDefaultValue(true);
+
+    // Change text
+    textPanel.text = newSliderDefault;
 }
 
 // Sets the current value
