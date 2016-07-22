@@ -74,7 +74,7 @@ var votingMenus = {
 						sort: 'range',
 						step: 1,
 						min: 1,
-						max: 10000,
+						max: 505000,
 						default: 1000
 					}
 				]

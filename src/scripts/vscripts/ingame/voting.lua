@@ -157,7 +157,7 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 
 			if type(amount) ~= 'number' then return 'voteErrorInvalidData' end
 			if math.floor(amount) ~= amount then return 'voteErrorInvalidData' end
-            if amount < 1 or amount > 10000 then return 'voteErrorInvalidData' end
+            if amount < 1 or amount > 505000 then return 'voteErrorInvalidData' end
 
             -- Add the description
             theVote.voteDes = 'votingGameplayAddXPDesArgs'
