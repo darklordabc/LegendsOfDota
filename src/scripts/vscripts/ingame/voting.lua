@@ -342,8 +342,8 @@ function lodVoting:createVote(activeVoteInfo)
     end, DoUniqueString('createVote'), activeVoteInfo.voteDuration)
 
     -- Casts our vote
-    --self.activeVoteInfo.plyVotes[self.activeVoteInfo.playerID] = true
-    --self.activeVoteInfo.totalYes = self.activeVoteInfo.totalYes + 1
+    self.activeVoteInfo.plyVotes[self.activeVoteInfo.playerID] = true
+    self.activeVoteInfo.totalYes = self.activeVoteInfo.totalYes + 1
 
     -- Check the progress of the vote
     self:checkVoteProgress()
