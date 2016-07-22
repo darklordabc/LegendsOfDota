@@ -99,6 +99,58 @@ var votingMenus = {
 					}
 				]
 			},
+			{
+				title: 'votingOptionsModifiers',
+				des: 'votingOptionsModifiersDes',
+				confirmVote: true,
+				back: 'changeOptionsSpeed',
+				options: [
+					{
+						title: 'votingOptionsModifiersGoldAmount',
+						des: 'votingOptionsModifiersGoldAmountDes',
+
+						fieldName: 'gold',
+						sort: 'range',
+						step: 1,
+						min: 0,
+						max: 1000,
+						default: 10,
+						linkTo: 'lodOptionGameSpeedGoldModifier'
+					},
+					{
+						title: 'votingOptionsModifiersXPAmount',
+						des: 'votingOptionsModifiersXPAmountDes',
+
+						fieldName: 'xp',
+						sort: 'range',
+						step: 1,
+						min: 0,
+						max: 1000,
+						default: 10,
+						linkTo: 'lodOptionGameSpeedEXPModifier'
+					}
+				]
+			},
+			{
+				title: 'votingOptionsBuybackCooldown',
+				des: 'votingOptionsBuybackCooldownDes',
+				confirmVote: true,
+				back: 'changeOptionsSpeed',
+				options: [
+					{
+						title: 'votingOptionsBuybackCooldownAmount',
+						des: 'votingOptionsBuybackCooldownAmountDes',
+
+						fieldName: 'amount',
+						sort: 'range',
+						step: 1,
+						min: 0,
+						max: 7 * 60,
+						default: 7 * 60,
+						linkTo: 'lodOptionGameSpeedBuybackCooldown'
+					}
+				]
+			},
 		]
 	},
 	balanceTeams: {

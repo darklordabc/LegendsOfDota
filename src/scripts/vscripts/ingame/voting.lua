@@ -184,6 +184,67 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
         	end
 		end,
 
+		votingOptionsModifiers = function()
+			-- Ensure we are in a match
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+			local gold = voteData.gold
+			local xp = voteData.xp
+
+			if type(gold) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(gold) ~= gold then return 'voteErrorInvalidData' end
+            if gold < 0 or gold > 1000 then return 'voteErrorInvalidData' end
+
+            if type(xp) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(xp) ~= xp then return 'voteErrorInvalidData' end
+            if xp < 0 or xp > 1000 then return 'voteErrorInvalidData' end
+
+            -- Add description
+            theVote.voteDes = 'votingOptionsModifiersAmountDesArgs'
+            theVote.voteDesArgs = {
+            	gold = gold,
+            	xp = xp
+        	}
+
+            -- Callback
+            theVote.callback = function()
+            	-- Adjust the respawn times
+            	OptionManager:SetOption('goldModifier', gold)
+			    OptionManager:SetOption('expModifier', xp)
+
+	    		-- Update options
+            	GameRules.pregame:updateOption('lodOptionGameSpeedGoldModifier', gold)
+            	GameRules.pregame:updateOption('lodOptionGameSpeedEXPModifier', xp)
+        	end
+		end,
+
+		votingOptionsBuybackCooldown = function()
+			-- Ensure we are in a match
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+			-- Ensure we have some valid vote data
+			local amount = voteData.amount
+
+			if type(amount) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(amount) ~= amount then return 'voteErrorInvalidData' end
+            if amount < 0 or amount > 7 * 60 then return 'voteErrorInvalidData' end
+
+            -- Add the description
+            theVote.voteDes = 'votingOptionsBuybackCooldownAmountDesArgs'
+            theVote.voteDesArgs = {
+            	amount = amount
+        	}
+
+            -- Callback
+            theVote.callback = function()
+            	-- Change the cooldown
+            	OptionManager:SetOption('buybackCooldown', amount)
+
+            	-- Update options
+            	GameRules.pregame:updateOption('lodOptionGameSpeedBuybackCooldown', amount)
+        	end
+		end,
+
 		--[[
 			GAMEPLAY
 		]]

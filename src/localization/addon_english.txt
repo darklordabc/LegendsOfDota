@@ -525,6 +525,24 @@
     "votingOptionsGoldTickRateAmountDes"            "The amount of gold to give each internal."
     "votingOptionsGoldTickRateAmountDesArgs"        "Change the gold given each internval to {amount}. Default is 1 gold per interval."
 
+    "votingOptionsBuybackCooldown"                  "Buyback Cooldown"
+    "votingOptionsBuybackCooldownDes"               "Change how long a player has to wait before they can use a buyback again."
+    "votingOptionsBuybackCooldownAmount"            "Buyback Cooldown Duration"
+    "votingOptionsBuybackCooldownAmountDes"         "The length of the buyback duration, default is 420 seconds."
+
+    "votingOptionsBuybackCooldownAmountDesArgs"     "Change the buyback cooldown to {amount} seconds."
+
+    "votingOptionsModifiers"                        "Change Gold & XP Modifiers"
+    "votingOptionsModifiersDes"                     "Changes the percentage of gold and XP that each player gets to killing units."
+
+    "votingOptionsModifiersGoldAmount"              "Gold Modifier Percentage"
+    "votingOptionsModifiersGoldAmountDes"           "The percentage of gold gain. (100 = normal)"
+
+    "votingOptionsModifiersXPAmount"                "XP Modifier Percentage"
+    "votingOptionsModifiersXPAmountDes"             "The percentage of XP gain. (100 = normal)"
+
+    "votingOptionsModifiersAmountDesArgs"           "Set the gold percentage to {gold} and the XP percentage to {xp}."
+
     "voteYes"                                       "Yes"
     "voteNo"                                        "No"
 
