@@ -60,6 +60,25 @@ var votingMenus = {
 					}
 				]
 			},
+			{
+				title: 'votingGameplayAddXP',
+				des: 'votingGameplayAddXPDes',
+				confirmVote: true,
+				back: 'gameplay',
+				options: [
+					{
+						title: 'votingGameplayAddXPAmount',
+						des: 'votingGameplayAddXPAmountDes',
+
+						fieldName: 'amount',
+						sort: 'range',
+						step: 1,
+						min: 1,
+						max: 10000,
+						default: 1000
+					}
+				]
+			},
 		]
 	},
 	giveup: {

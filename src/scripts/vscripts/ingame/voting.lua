@@ -148,6 +148,37 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
         	end
 		end,
 
+		votingGameplayAddXP = function()
+			-- Ensure we are in a match
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+			-- Ensure we have some valid vote data
+			local amount = voteData.amount
+
+			if type(amount) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(amount) ~= amount then return 'voteErrorInvalidData' end
+            if amount < 1 or amount > 10000 then return 'voteErrorInvalidData' end
+
+            -- Add the description
+            theVote.voteDes = 'votingGameplayAddXPDesArgs'
+            theVote.voteDesArgs = {
+            	amount = amount
+        	}
+
+            -- Callback
+            theVote.callback = function()
+            	-- Allocate the extra gold
+            	local maxPlayers = 24
+            	for i=0,maxPlayers-1 do
+            		local hero = PlayerResource:GetSelectedHeroEntity(i)
+
+            		if IsValidEntity(hero) then
+            			hero:AddExperience(amount, false, false)
+            		end
+            	end
+        	end
+		end,
+
 		--[[
 			GIVING UP
 		]]

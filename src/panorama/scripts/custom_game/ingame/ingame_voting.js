@@ -4,6 +4,9 @@
 var hiddenVote;
 var activeVoteData;
 
+// A timer hook
+var shouldUpdateTimer = -1;
+
 // When the user wants to open the voting menu
 function onBtnOpenVoteSystemPressed() {
 	// Toggles the creation menu
@@ -194,6 +197,30 @@ function OnGetIngameData(table_name, key, data) {
 	}
 }
 
+function setVoteExpireTime(endOfLife) {
+	// Create a new ID
+	var myID = ++shouldUpdateTimer;
+
+	var updateTimer = function() {
+		// Is this still the most current timer?
+		if(myID != shouldUpdateTimer) return;
+
+		// Calculate how long is left
+		var now = Game.Time();
+		var timeLeft = Math.ceil(endOfLife - now);
+		if(timeLeft <= 0) timeLeft = '';
+
+		// Update the text
+		$('#votingActiveVoteTimer').text = timeLeft;
+
+		// Schedule the next one
+		$.Schedule(0.1, updateTimer);
+	}
+
+	// Start the timer
+	updateTimer();
+}
+
 // When we get vote data
 function OnGetVoteData(table_name, key, data) {
 	var playerID = Players.GetLocalPlayer();
@@ -263,19 +290,28 @@ function OnGetVoteData(table_name, key, data) {
 		if(now > data.hideTime) {
 			// Hide now
 			$('#votingActiveVote').visible = false;
+			return;
 		} else {
 			// Hide in a few moments
 			var theVoteID = data.voteID;
 			$.Schedule(data.hideTime - now, function() {
 	            if(theVoteID == data.voteID) {
 	            	$('#votingActiveVote').visible = false;
+	            	return;
 	            }
 	        });
 		}
+
+		// Update timer
+		setVoteExpireTime(data.hideTime);
 	} else {
 		if(hiddenVote == data.voteID) {
 			$('#votingActiveVote').visible = false;
+			return;
 		}
+
+		// Update timer
+		setVoteExpireTime(data.endTime);
 	}
 }
 

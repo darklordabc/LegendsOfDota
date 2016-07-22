@@ -493,6 +493,13 @@
     "votingGameplayAddGoldAmount"                   "Amount"
     "votingGameplayAddGoldAmountDes"                "The amount of gold to give to each player."
 
+    "votingGameplayAddXP"                           "Give Experience"
+    "votingGameplayAddXPDes"                        "Give every hero in the match the specified amount of experience."
+    "votingGameplayAddXPDesArgs"                    "Give every hero {amount} experience."
+
+    "votingGameplayAddXPAmount"                     "Amount"
+    "votingGameplayAddXPAmountDes"                  "The amount of experience to give to each hero."
+
     "voteYes"                                       "Yes"
     "voteNo"                                        "No"
 
