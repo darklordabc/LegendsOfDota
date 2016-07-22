@@ -213,7 +213,7 @@
     "lodUniqueSkillsGlobal"                         "Unique Global Skills"
 
     "lodOptionDesGameSpeedRespawnTimePercentage"    "Respawn Time Percentage (100 = normal)"
-    "lodOptionAboutGameSpeedRespawnTimePercentage"  "Makes the default respawn time decrease by the given percentage."
+    "lodOptionAboutGameSpeedRespawnTimePercentage"  "Changes the default respawn time based on the given percentage."
 
     "lodOptionDesGameSpeedRespawnTimeConstant"      "Additional Respawn Time"
     "lodOptionAboutGameSpeedRespawnTimeConstant"    "Adds a constant number of seconds onto the default respawn time."
@@ -480,6 +480,9 @@
     "votingCreateVote"                              "Create Vote"
     "votingCreateVoteDes"                           "Create the vote."
 
+    "votingChangeOptionsSpeed"                      "Game Speed"
+    "votingChangeOptionsSpeedDes"                   "Change options that affect the speed of gameplay."
+
     "votingGiveupCallGG"                            "Call GG"
     "votingGiveupCallGGDes"                         "Surrender, make your team lose, call GG."
 
@@ -504,6 +507,16 @@
     "votingBalanceTeamsSwapSelfDes"                 "Swap you onto the other team."
 
     "votingBalanceTeamsSwapSelfDesArgs"             "Swap '{plyName}' onto the other team?"
+
+    "votingOptionsRespawnTime"                      "Respawn Time"
+    "votingOptionsRespawnTimeDes"                   "Change the respawn time."
+    "votingOptionsRespawnTimeDesArgs"               "Change the respawn time {percentage}% of the default and add a constant {constant} second(s) to it."
+
+    "votingOptionsRespawnTimePercentage"            "Respawn Time Percentage (100 = normal)"
+    "votingOptionsRespawnTimePercentageDes"         "Changes the default respawn time based on the given percentage."
+
+    "votingOptionsRespawnTimeConstant"              "Additional Respawn Time"
+    "votingOptionsRespawnTimeConstantDes"           "Adds a constant number of seconds onto the respawn time."
 
     "voteYes"                                       "Yes"
     "voteNo"                                        "No"

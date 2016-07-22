@@ -2,6 +2,7 @@
 local notifications = require('ingame.notifications')
 local Timers = require('easytimers')
 local network = require('network')
+local OptionManager = require('optionmanager')
 
 -- Options
 local maxVoteDuration = 30			-- How long a vote lasts for
@@ -118,6 +119,40 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 	local this = self
 
 	local votingPrepare = {
+		--[[
+			CHANGING OPTIONS
+		]]
+
+		votingOptionsRespawnTime = function()
+			-- Ensure we are in a match
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+			local percentage = voteData.percentage
+			local constant = voteData.constant
+
+			if type(percentage) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(percentage) ~= percentage then return 'voteErrorInvalidData' end
+            if percentage < 0 or percentage > 100 then return 'voteErrorInvalidData' end
+
+            if type(constant) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(constant) ~= constant then return 'voteErrorInvalidData' end
+            if constant < 0 or constant > 120 then return 'voteErrorInvalidData' end
+
+            -- Add description
+            theVote.voteDes = 'votingOptionsRespawnTimeDesArgs'
+            theVote.voteDesArgs = {
+            	percentage = percentage,
+            	constant = constant
+        	}
+
+            -- Callback
+            theVote.callback = function()
+            	-- Adjust the respawn times
+            	OptionManager:SetOption('respawnModifierPercentage', percentage)
+	    		OptionManager:SetOption('respawnModifierConstant', constant)
+        	end
+		end,
+
 		--[[
 			GAMEPLAY
 		]]

@@ -6,7 +6,8 @@ var votingMenus = {
 		items: [
 			{
 				title: 'votingChangeOptions',
-				des: 'votingChangeOptionsDes'
+				des: 'votingChangeOptionsDes',
+				link: 'changeOptions'
 			},
 			{
 				title: 'votingBalanceTeams',
@@ -23,6 +24,59 @@ var votingMenus = {
 				des: 'votingGiveupDes',
 				link: 'giveup'
 			}
+		]
+	},
+	changeOptions: {
+		items: [
+			{
+				title: 'votingGoBack',
+				des: 'votingGoBackDes',
+				link: 'mainMenu'
+			},
+			{
+				title: 'votingChangeOptionsSpeed',
+				des: 'votingChangeOptionsSpeedDes',
+				link: 'changeOptionsSpeed'
+			}
+		]
+	},
+	changeOptionsSpeed: {
+		items: [
+			{
+				title: 'votingGoBack',
+				des: 'votingGoBackDes',
+				link: 'mainMenu'
+			},
+			{
+				title: 'votingOptionsRespawnTime',
+				des: 'votingOptionsRespawnTimeDes',
+				confirmVote: true,
+				back: 'changeOptionsSpeed',
+				options: [
+					{
+						title: 'votingOptionsRespawnTimePercentage',
+						des: 'votingOptionsRespawnTimePercentageDes',
+
+						fieldName: 'percentage',
+						sort: 'range',
+						step: 1,
+						min: 0,
+						max: 100,
+						default: 100
+					},
+					{
+						title: 'votingOptionsRespawnTimeConstant',
+						des: 'votingOptionsRespawnTimeConstantDes',
+
+						fieldName: 'constant',
+						sort: 'range',
+						step: 1,
+						min: 0,
+						max: 120,
+						default: 0
+					}
+				]
+			},
 		]
 	},
 	balanceTeams: {
