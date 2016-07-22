@@ -483,7 +483,7 @@
     "votingGiveupCallGG"                            "Call GG"
     "votingGiveupCallGGDes"                         "Surrender, make your team lose, call GG."
 
-    "votingGiveupCallDraw"                          "Call match a draw"
+    "votingGiveupCallDraw"                          "Call Match A Draw"
     "votingGiveupCallDrawDes"                       "Make the match a draw, neither team wins or loses, and the match will end."
 
     "votingGameplayAddGold"                         "Give Gold"
