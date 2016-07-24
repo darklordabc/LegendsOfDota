@@ -5,9 +5,9 @@ var votingMenus = {
 	mainMenu: {
 		items: [
 			{
-				title: 'votingChangeOptions',
-				des: 'votingChangeOptionsDes',
-				link: 'changeOptions'
+				title: 'votingGameplay',
+				des: 'votingGameplayDes',
+				link: 'gameplay'
 			},
 			{
 				title: 'votingBalanceTeams',
@@ -15,14 +15,19 @@ var votingMenus = {
 				link: 'balanceTeams'
 			},
 			{
-				title: 'votingGameplay',
-				des: 'votingGameplayDes',
-				link: 'gameplay'
+				title: 'votingChangeOptions',
+				des: 'votingChangeOptionsDes',
+				link: 'changeOptions'
 			},
 			{
 				title: 'votingGiveup',
 				des: 'votingGiveupDes',
 				link: 'giveup'
+			},
+			{
+				title: 'votingCloseVoting',
+				des: 'votingCloseVotingDes',
+				close: true
 			}
 		]
 	},
@@ -153,21 +158,6 @@ var votingMenus = {
 			},
 		]
 	},
-	balanceTeams: {
-		items: [
-			{
-				title: 'votingGoBack',
-				des: 'votingGoBackDes',
-				link: 'mainMenu'
-			},
-			{
-				title: 'votingBalanceTeamsSwapSelf',
-				des: 'votingBalanceTeamsSwapSelfDes',
-				confirmVote: true,
-				back: 'balanceTeams'
-			},
-		]
-	},
 	gameplay: {
 		items: [
 			{
@@ -210,6 +200,51 @@ var votingMenus = {
 						min: 1,
 						max: 505000,
 						default: 1000
+					}
+				]
+			},
+		]
+	},
+	balanceTeams: {
+		items: [
+			{
+				title: 'votingGoBack',
+				des: 'votingGoBackDes',
+				link: 'mainMenu'
+			},
+			{
+				title: 'votingBalanceTeamsSwapSelf',
+				des: 'votingBalanceTeamsSwapSelfDes',
+				confirmVote: true,
+				back: 'balanceTeams'
+			},
+			{
+				title: 'votingBalanceAddBots',
+				des: 'votingBalanceAddBotsDes',
+				confirmVote: true,
+				back: 'balanceTeams',
+				options: [
+					{
+						title: 'votingBalanceAddBotsRadiant',
+						des: 'votingBalanceAddBotsRadiantDes',
+
+						fieldName: 'radiant',
+						sort: 'range',
+						step: 1,
+						min: 0,
+						max: 10,
+						default: 1
+					},
+					{
+						title: 'votingBalanceAddBotsDire',
+						des: 'votingBalanceAddBotsDireDes',
+
+						fieldName: 'dire',
+						sort: 'range',
+						step: 1,
+						min: 0,
+						max: 10,
+						default: 1
 					}
 				]
 			},

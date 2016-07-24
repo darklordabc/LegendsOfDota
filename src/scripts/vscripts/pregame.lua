@@ -673,7 +673,7 @@ function Pregame:actualSpawnPlayer()
         if player ~= nil then
             local heroName = self.selectedHeroes[playerID] or self:getRandomHero()
 
-            function spawnTheHero()
+            local spawnTheHero = function()
                 local status2,err2 = pcall(function()
                     -- Create the hero and validate it
                     local hero = CreateHeroForPlayer(heroName, player)
@@ -714,11 +714,12 @@ function Pregame:actualSpawnPlayer()
                 -- Directly spawn the hero
                 spawnTheHero()
             else
-                -- Already cached this player's hero
-                this.cachedPlayerHeroes[playerID] = true
-
                 -- Attempt to precache their hero
                 PrecacheUnitByNameAsync(heroName, function()
+                    -- We have now cached this player's hero
+                    this.cachedPlayerHeroes[playerID] = true
+
+                    -- Spawn it
                     spawnTheHero()
                 end, playerID)
             end
@@ -4122,11 +4123,65 @@ function Pregame:countRadiantDire()
     return totalRadiant, totalDire
 end
 
+function Pregame:addBots(team, count)
+    -- Grab number of players
+    local totalRadiant, totalDire = self:countRadiantDire()
+
+    -- The amount we have added
+    local totalAdded = 0
+
+    local addedPlayers = {}
+
+    -- Add radiant players
+    while totalAdded < count do
+        local playerID = totalRadiant + totalDire + totalAdded
+
+        table.insert(addedPlayers, playerID)
+
+        totalAdded = totalAdded + 1
+        Tutorial:AddBot('', '', 'unfair', true)
+
+        local ply = PlayerResource:GetPlayer(playerID)
+        if ply then
+            local store = {
+                ply = ply,
+                team = team
+            }
+
+            -- Store this bot player
+            if team == DOTA_TEAM_GOODGUYS then
+                self.botPlayers.radiant[playerID] = store
+            elseif team == DOTA_TEAM_BADGUYS then
+                self.botPlayers.dire[playerID] = store
+            end
+            self.botPlayers.all[playerID] = store
+
+            -- Push them onto the correct team
+            PlayerResource:SetCustomTeamAssignment(playerID, team)
+        end
+    end
+
+    return addedPlayers
+end
+
 -- Adds bot players to the game
 function Pregame:addBotPlayers()
 	-- Ensure bots should actually be added
 	if self.addedBotPlayers then return end
 	self.addedBotPlayers = true
+
+    -- Make the team sizes huge
+    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, DOTA_MAX_TEAM_PLAYERS)
+    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, DOTA_MAX_TEAM_PLAYERS)
+
+    -- Create the store for bot players
+    self.botPlayers = {
+        radiant = {},
+        dire = {},
+        all = {}
+    }
+
+    -- Do we need to actually add bots?
 	if not self.enabledBots then return end
 
 	-- Settings to determine how many players to place onto each team
@@ -4134,70 +4189,20 @@ function Pregame:addBotPlayers()
 	self.desiredDire = self.desiredDire or 5
 
     -- Adjust the team sizes
-    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, self.desiredRadiant)
-    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, self.desiredDire)
+    --GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, self.desiredRadiant)
+    --GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, self.desiredDire)
 
-	-- Grab number of players
+    -- Grab number of players
     local totalRadiant, totalDire = self:countRadiantDire()
 
-    -- Add bot players
-    self.botPlayers = {
-    	radiant = {},
-    	dire = {},
-    	all = {}
-	}
-
-    local playerID
-
-	-- Add radiant players
-	while totalRadiant < self.desiredRadiant do
-		playerID = totalRadiant + totalDire
-		totalRadiant = totalRadiant + 1
-		Tutorial:AddBot('', '', 'unfair', true)
-
-		local ply = PlayerResource:GetPlayer(playerID)
-		if ply then
-			local store = {
-				ply = ply,
-				team = DOTA_TEAM_GOODGUYS
-			}
-
-			-- Store this bot player
-			self.botPlayers.radiant[playerID] = store
-			self.botPlayers.all[playerID] = store
-
-			-- Push them onto the correct team
-			PlayerResource:SetCustomTeamAssignment(playerID, DOTA_TEAM_GOODGUYS)
-		end
-	end
-
-	-- Add dire players
-	while totalDire < self.desiredDire do
-		playerID = totalRadiant + totalDire
-		totalDire = totalDire + 1
-		Tutorial:AddBot('', '', 'unfair', false)
-
-		local ply = PlayerResource:GetPlayer(playerID)
-		if ply then
-			local store = {
-				ply = ply,
-				team = DOTA_TEAM_BADGUYS
-			}
-
-			-- Store this bot player
-			self.botPlayers.dire[playerID] = store
-			self.botPlayers.all[playerID] = store
-
-			-- Push them onto the correct team
-			PlayerResource:SetCustomTeamAssignment(playerID, DOTA_TEAM_BADGUYS)
-		end
-	end
+    self:addBots(DOTA_TEAM_GOODGUYS, self.desiredRadiant - totalRadiant)
+    self:addBots(DOTA_TEAM_BADGUYS, self.desiredDire - totalDire)
 end
 
 -- Generate builds for bots
 function Pregame:generateBotBuilds()
     -- Ensure bots are actually enabled
-    if not self.enabledBots then return end
+    --if not self.enabledBots then return end
 
     -- Ensure we have bot players allocated
     if not self.botPlayers.all then return end
@@ -4251,71 +4256,74 @@ function Pregame:generateBotBuilds()
     }
 
     for playerID,botInfo in pairs(self.botPlayers.all) do
-    	-- Grab a hero
-        local heroName = 'npc_dota_hero_pudge'
-        if #possibleHeroes > 0 then
-            heroName = table.remove(possibleHeroes, math.random(#possibleHeroes))
-        end
+        -- Only generate a build for new bots
+        if not botInfo.build then
+        	-- Grab a hero
+            local heroName = 'npc_dota_hero_pudge'
+            if #possibleHeroes > 0 then
+                heroName = table.remove(possibleHeroes, math.random(#possibleHeroes))
+            end
 
-        -- Generate build
-        local build = {}
-        local skillID = 1
-        local defaultSkills = self.botHeroes[heroName]
-        if defaultSkills then
-            for k,abilityName in pairs(defaultSkills) do
-                if self.flagsInverse[abilityName] and not self.bannedAbilities[abilityName] then
-                    build[skillID] = abilityName
-                    skillID = skillID + 1
+            -- Generate build
+            local build = {}
+            local skillID = 1
+            local defaultSkills = self.botHeroes[heroName]
+            if defaultSkills then
+                for k,abilityName in pairs(defaultSkills) do
+                    if self.flagsInverse[abilityName] and not self.bannedAbilities[abilityName] then
+                        build[skillID] = abilityName
+                        skillID = skillID + 1
+                    end
                 end
             end
-        end
 
-        -- Allocate more abilities
-        while skillID <= maxSlots do
-            -- Attempt to pick a high priority skill, otherwise pick any passive, otherwise pick any
-            local newAb = self:findRandomSkill(build, skillID, playerID, function(abilityName)
-                return bestSkills[abilityName] ~= nil
-            end) or self:findRandomSkill(build, skillID, playerID, function(abilityName)
-                return SkillManager:isPassive(abilityName)
-            end) or self:findRandomSkill(build, skillID, playerID)
+            -- Allocate more abilities
+            while skillID <= maxSlots do
+                -- Attempt to pick a high priority skill, otherwise pick any passive, otherwise pick any
+                local newAb = self:findRandomSkill(build, skillID, playerID, function(abilityName)
+                    return bestSkills[abilityName] ~= nil
+                end) or self:findRandomSkill(build, skillID, playerID, function(abilityName)
+                    return SkillManager:isPassive(abilityName)
+                end) or self:findRandomSkill(build, skillID, playerID)
 
-            if newAb ~= nil then
-                build[skillID] = newAb
+                if newAb ~= nil then
+                    build[skillID] = newAb
+                end
+
+                -- Move onto next slot
+                skillID = skillID + 1
             end
 
-            -- Move onto next slot
-            skillID = skillID + 1
+            -- Shuffle their build to make it look like a random set
+            for i = maxSlots, 2, -1 do
+                local j = math.random (i)
+                build[i], build[j] = build[j], build[i]
+            end
+
+            -- Are there any premade builds?
+            if self.premadeBotBuilds then
+            	if botInfo.team == DOTA_TEAM_BADGUYS and self.premadeBotBuilds.dire and #self.premadeBotBuilds.dire > 0 then
+            		local info = table.remove(self.premadeBotBuilds.dire, 1)
+            		build = info.build
+            		heroName = info.heroName
+            	end
+
+            	if botInfo.team == DOTA_TEAM_GOODGUYS and self.premadeBotBuilds.radiant and #self.premadeBotBuilds.radiant > 0 then
+            		local info = table.remove(self.premadeBotBuilds.radiant, 1)
+            		build = info.build
+            		heroName = info.heroName
+            	end
+            end
+
+            -- Store the info
+            botInfo.build = build
+            botInfo.heroName = heroName
+
+            -- Network their build
+            self:setSelectedHero(playerID, heroName, true)
+            self.selectedSkills[playerID] = build
+            network:setSelectedAbilities(playerID, build)
         end
-
-        -- Shuffle their build to make it look like a random set
-        for i = maxSlots, 2, -1 do
-            local j = math.random (i)
-            build[i], build[j] = build[j], build[i]
-        end
-
-        -- Are there any premade builds?
-        if self.premadeBotBuilds then
-        	if botInfo.team == DOTA_TEAM_BADGUYS and self.premadeBotBuilds.dire and #self.premadeBotBuilds.dire > 0 then
-        		local info = table.remove(self.premadeBotBuilds.dire, 1)
-        		build = info.build
-        		heroName = info.heroName
-        	end
-
-        	if botInfo.team == DOTA_TEAM_GOODGUYS and self.premadeBotBuilds.radiant and #self.premadeBotBuilds.radiant > 0 then
-        		local info = table.remove(self.premadeBotBuilds.radiant, 1)
-        		build = info.build
-        		heroName = info.heroName
-        	end
-        end
-
-        -- Store the info
-        botInfo.build = build
-        botInfo.heroName = heroName
-
-        -- Network their build
-        self:setSelectedHero(playerID, heroName, true)
-        self.selectedSkills[playerID] = build
-        network:setSelectedAbilities(playerID, build)
     end
 end
 

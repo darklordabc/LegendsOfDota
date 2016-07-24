@@ -312,6 +312,76 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 		]]
 
 		-- Swapping yourself onto another team
+		votingBalanceAddBots = function()
+			-- Ensure we are in a match
+			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+			-- Ensure we have some valid vote data
+			local radiantBots = voteData.radiant
+			local direBots = voteData.dire
+
+			if type(radiantBots) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(radiantBots) ~= radiantBots then return 'voteErrorInvalidData' end
+            if radiantBots < 0 or radiantBots > 10 then return 'voteErrorInvalidData' end
+
+            if type(direBots) ~= 'number' then return 'voteErrorInvalidData' end
+			if math.floor(direBots) ~= direBots then return 'voteErrorInvalidData' end
+            if direBots < 0 or direBots > 10 then return 'voteErrorInvalidData' end
+
+            local totalRadiant = 0
+            local totalDire = 0
+
+			local maxPlayers = 24
+			for i=0,maxPlayers-1 do
+				local state = PlayerResource:GetConnectionState(i)
+
+				-- Are they are bot, or a CONNECTED player?
+				if state == 1 or state == 2 then
+					local theirTeam = PlayerResource:GetCustomTeamAssignment(i)
+
+					if theirTeam == DOTA_TEAM_BADGUYS then
+						totalDire = totalDire + 1
+					elseif theirTeam == DOTA_TEAM_GOODGUYS then
+						totalRadiant = totalRadiant + 1
+					end
+				end
+			end
+
+			if totalRadiant + radiantBots > 10 then
+				return 'voteErrorNoPlayerSlots'
+			end
+
+			if totalDire + direBots > 10 then
+				return 'voteErrorNoPlayerSlots'
+			end
+
+			theVote.voteDes = 'votingBalanceAddBotsDesArgs'
+
+			theVote.voteDesArgs = {
+				radiant = radiantBots,
+				dire = direBots
+			}
+
+			theVote.callback = function()
+				-- Add bots
+				local allNew = GameRules.pregame:addBots(DOTA_TEAM_GOODGUYS, radiantBots)
+				local newDire = GameRules.pregame:addBots(DOTA_TEAM_BADGUYS, direBots)
+
+				for k,v in pairs(newDire) do
+					table.insert(allNew, v)
+				end
+
+				-- Generate their builds
+				GameRules.pregame:generateBotBuilds()
+
+				-- Spawn the bots
+				for _,playerID in pairs(allNew) do
+					GameRules.pregame:spawnPlayer(playerID)
+				end
+			end
+		end,
+
+		-- Adding bots
 		votingBalanceTeamsSwapSelf = function()
 			-- Ensure we are in a match
 			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end

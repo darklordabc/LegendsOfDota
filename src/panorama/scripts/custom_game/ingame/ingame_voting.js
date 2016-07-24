@@ -337,7 +337,8 @@ function closeActiveVotePanel() {
 	// Define exports
 	Game.shared.voting = {
 		votingDisplayMenu: votingDisplayMenu,
-		votingConfirmVote: votingConfirmVote
+		votingConfirmVote: votingConfirmVote,
+		votingHideCreationMenu: votingHideCreationMenu
 	}
 
 	// Hook vote changes

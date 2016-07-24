@@ -33,6 +33,11 @@ function onVoteOptionPressed() {
 		ourInfo.callback(ourInfo);
 		return;
 	}
+
+	// Should we close the window?
+	if(ourInfo.close) {
+		Game.shared.voting.votingHideCreationMenu();
+	}
 }
 
 function addSliderInput(sliderStep, sliderMin, sliderMax, sliderDefault, callback) {

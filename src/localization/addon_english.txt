@@ -477,6 +477,9 @@
     "votingCancelVote"                              "Go Back"
     "votingCancelVoteDes"                           "Do not create the vote, return to the previous menu."
 
+    "votingCloseVoting"                             "Close Voting"
+    "votingCloseVotingDes"                             "Close the vote creation menu."
+
     "votingCreateVote"                              "Create Vote"
     "votingCreateVoteDes"                           "Create the vote."
 
@@ -542,6 +545,14 @@
     "votingOptionsModifiersXPAmountDes"             "The percentage of XP gain. (100 = normal)"
 
     "votingOptionsModifiersAmountDesArgs"           "Set the gold percentage to {gold} and the XP percentage to {xp}."
+
+    "votingBalanceAddBots"                          "Add Bots"
+    "votingBalanceAddBotsDes"                       "Adds bots to the match to replace other players."
+    "votingBalanceAddBotsDesArgs"                   "Add {radiant} bot(s) to Radiant and {dire} bot(s) to Dire."
+    "votingBalanceAddBotsRadiant"                   "Radiant Bots"
+    "votingBalanceAddBotsRadiantDes"                "The number of bots to add to radiant."
+    "votingBalanceAddBotsDire"                      "Dire Bots"
+    "votingBalanceAddBotsDireDes"                   "The number of bots to add to dire."
 
     "voteYes"                                       "Yes"
     "voteNo"                                        "No"
