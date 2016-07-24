@@ -328,6 +328,11 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 			if math.floor(direBots) ~= direBots then return 'voteErrorInvalidData' end
             if direBots < 0 or direBots > 10 then return 'voteErrorInvalidData' end
 
+            -- Ensure they want to add some bots
+            if direBots == 0 and radiantBots == 0 then
+            	return 'voteErrorInvalidData'
+            end
+
             local totalRadiant = 0
             local totalDire = 0
 
@@ -347,11 +352,11 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 				end
 			end
 
-			if totalRadiant + radiantBots > 10 then
+			if radiantBots > 0 and totalRadiant + radiantBots > 10 then
 				return 'voteErrorNoPlayerSlots'
 			end
 
-			if totalDire + direBots > 10 then
+			if direBots > 0 and totalDire + direBots > 10 then
 				return 'voteErrorNoPlayerSlots'
 			end
 

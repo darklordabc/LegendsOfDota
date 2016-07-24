@@ -213,12 +213,6 @@ var votingMenus = {
 				link: 'mainMenu'
 			},
 			{
-				title: 'votingBalanceTeamsSwapSelf',
-				des: 'votingBalanceTeamsSwapSelfDes',
-				confirmVote: true,
-				back: 'balanceTeams'
-			},
-			{
 				title: 'votingBalanceAddBots',
 				des: 'votingBalanceAddBotsDes',
 				confirmVote: true,
@@ -233,7 +227,7 @@ var votingMenus = {
 						step: 1,
 						min: 0,
 						max: 10,
-						default: 1
+						default: 0
 					},
 					{
 						title: 'votingBalanceAddBotsDire',
@@ -244,9 +238,15 @@ var votingMenus = {
 						step: 1,
 						min: 0,
 						max: 10,
-						default: 1
+						default: 0
 					}
 				]
+			},
+			{
+				title: 'votingBalanceTeamsSwapSelf',
+				des: 'votingBalanceTeamsSwapSelfDes',
+				confirmVote: true,
+				back: 'balanceTeams'
 			},
 		]
 	},
