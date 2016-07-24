@@ -51,6 +51,11 @@ function addSliderInput(sliderStep, sliderMin, sliderMax, sliderDefault, callbac
         callback(newValue);
     });
 
+    // When the value changes
+    sliderPanelCon.onChange(function(newValue) {
+        callback(newValue);
+    });
+
     // Init
     sliderPanelCon.initSlider(sliderStep, sliderMin, sliderMax, sliderDefault);
 }

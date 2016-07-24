@@ -117,6 +117,11 @@ function hookSliderChange() {
         textPanel.text = fixedValue;
 
         // Run the callback
+        for(var i=0; i<sliderChangedHooks.length; ++i) {
+        	sliderChangedHooks[i](fixedValue);
+        }
+
+        // Run the callback
         for(var i=0; i<sliderCompletedHooks.length; ++i) {
         	sliderCompletedHooks[i](fixedValue);
         }
@@ -133,6 +138,11 @@ function hookSliderChange() {
 
         // Change the slider
         sliderPanel.value = newValue;
+
+        // Run the callback
+        for(var i=0; i<sliderChangedHooks.length; ++i) {
+        	sliderChangedHooks[i](newValue);
+        }
     }, {
     	onfocus: function() {
     		ignoreSliderInput = true;
@@ -147,6 +157,11 @@ function hookSliderChange() {
 
 	        // Fixed the value
 	        newValue = fixCurrentValue(newValue);
+
+	        // Run the callback
+	        for(var i=0; i<sliderChangedHooks.length; ++i) {
+	        	sliderChangedHooks[i](newValue);
+	        }
 
     		// Run the callback
 	        for(var i=0; i<sliderCompletedHooks.length; ++i) {

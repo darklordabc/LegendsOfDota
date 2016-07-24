@@ -34,7 +34,6 @@
 		                <Label text="voteNo" />
 		            </Button>
 	    		</Panel>
-	    		<Label text="lodVoteCountLabel" />
 	    		<Panel id="lodVoteCountContainer">
 	    			<Panel class="lodVoteCountContainerSub">
 	    				<Label text="Yes" />
@@ -50,7 +49,7 @@
 	    		<Label id="lodVoteFailed" text="lodVoteFailed" />
 	    	</Panel>
 	    	<Panel id="votingActiveVoteTimerContainer">
-	    		<Label id="votingActiveVoteTimer" text="60" />
+	    		<Label id="votingActiveVoteTimer" />
 	    		<Label text="X" onactivate="closeActiveVotePanel()" />
 	    	</Panel>
     	</Panel>

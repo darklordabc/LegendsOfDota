@@ -1,4 +1,5 @@
 -- Imports
+local constants = require('constants')
 local notifications = require('ingame.notifications')
 local Timers = require('easytimers')
 local network = require('network')
@@ -379,9 +380,35 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 				-- Generate their builds
 				GameRules.pregame:generateBotBuilds()
 
+				-- Work out how much EXP is needed to get the bot to the level of the highest player in the match
+				local addEXP = 0
+				local addGold = 0
+				local maxPlayers = 24
+				for playerID=0,maxPlayers-1 do
+					local level = PlayerResource:GetLevel(playerID)
+					if level > 1 then
+						local expNeeded = constants.XP_PER_LEVEL_TABLE[level]
+
+						if expNeeded and expNeeded > addEXP then
+							addEXP = expNeeded
+						end
+					end
+
+					local gpm = PlayerResource:GetGoldPerMin(playerID)
+					if gpm and gpm > 0 and gpm > addGold then
+						gpm = addGold
+					end
+				end
+
+				-- Multiply by time to get total gold
+				addGold = addGold * Time() / 60
+
 				-- Spawn the bots
 				for _,playerID in pairs(allNew) do
+					print(playerID)
 					GameRules.pregame:spawnPlayer(playerID)
+
+					this:addDelayedGoldExp(playerID, addGold, addEXP)
 				end
 			end
 		end,
@@ -636,6 +663,25 @@ function lodVoting:callGG(losingTeam)
 	elseif losingTeam == DOTA_TEAM_GOODGUYS then
 		GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
 	end
+end
+
+-- Adds gold and EXP to a player after a short delay
+function lodVoting:addDelayedGoldExp(playerID, gold, exp)
+	local this = self
+
+	Timers:CreateTimer(function()
+		-- Grab the hero and add EXP
+		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+		if IsValidEntity(hero) then
+			-- Add Exp
+			hero:AddExperience(exp, false, false)
+
+			-- Add Gold
+			PlayerResource:SetGold(playerID, PlayerResource:GetReliableGold(playerID) + gold, true)
+		else
+			this:addDelayedGoldExp(playerID, gold, exp)
+		end
+    end, DoUniqueString('addGoldExp'), 1)
 end
 
 -- Return an instance of this class
