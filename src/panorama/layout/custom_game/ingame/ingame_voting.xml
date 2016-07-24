@@ -37,12 +37,12 @@
 	    		<Panel id="lodVoteCountContainer">
 	    			<Panel class="lodVoteCountContainerSub">
 	    				<Label text="Yes" />
-	    				<Label id="lodVoteCountYes" />
+	    				<Label id="lodVoteCountYes" class="lodVoteCountNumberResult" />
 	    			</Panel>
 
 	    			<Panel class="lodVoteCountContainerSub">
 	    				<Label text="No" />
-	    				<Label id="lodVoteCountNo" />
+	    				<Label id="lodVoteCountNo" class="lodVoteCountNumberResult" />
 	    			</Panel>
 	    		</Panel>
 	    		<Label id="lodVotePassed" text="lodVotePassed" />

@@ -120,6 +120,10 @@
 	margin-right: 8px;
 }
 
+.lodVoteCountNumberResult {
+	margin-left: 4px;
+}
+
 #lodVotePassed {
 	font-size: 24px;
 	color: #00FF00;
