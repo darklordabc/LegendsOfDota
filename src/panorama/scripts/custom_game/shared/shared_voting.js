@@ -50,7 +50,7 @@ var votingMenus = {
 			{
 				title: 'votingGoBack',
 				des: 'votingGoBackDes',
-				link: 'mainMenu'
+				link: 'changeOptions'
 			},
 			{
 				title: 'votingOptionsRespawnTime',
