@@ -405,7 +405,6 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 
 				-- Spawn the bots
 				for _,playerID in pairs(allNew) do
-					print(playerID)
 					GameRules.pregame:spawnPlayer(playerID)
 
 					this:addDelayedGoldExp(playerID, addGold, addEXP)
