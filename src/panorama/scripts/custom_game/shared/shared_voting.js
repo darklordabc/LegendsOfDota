@@ -248,6 +248,12 @@ var votingMenus = {
 				confirmVote: true,
 				back: 'balanceTeams'
 			},
+			{
+				title: 'votingBalanceTeamsLevelHeroes',
+				des: 'votingBalanceTeamsLevelHeroesDes',
+				confirmVote: true,
+				back: 'balanceTeams'
+			},
 		]
 	},
 	giveup: {

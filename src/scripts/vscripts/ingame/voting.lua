@@ -415,40 +415,53 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 
 		-- Adding bots
 		votingBalanceTeamsSwapSelf = function()
+            -- Ensure we are in a match
+            if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+            -- Check number of players on other team
+            local enemyTeam = DOTA_TEAM_BADGUYS
+            if plyTeam == DOTA_TEAM_BADGUYS then
+                enemyTeam = DOTA_TEAM_GOODGUYS
+            end
+
+            local totalEnemies = 0
+            local maxPlayers = 24
+            for i=0,maxPlayers-1 do
+                local state = PlayerResource:GetConnectionState(i)
+
+                -- Are they are bot, or a CONNECTED player?
+                if state == 1 or state == 2 then
+                    if PlayerResource:GetCustomTeamAssignment(i) == enemyTeam then
+                        totalEnemies = totalEnemies + 1
+                    end
+                end
+            end
+
+            if totalEnemies >= DOTA_MAX_TEAM_PLAYERS then
+                return 'voteErrorNoPlayerSlots'
+            end
+
+            theVote.voteDes = 'votingBalanceTeamsSwapSelfDesArgs'
+
+            theVote.voteDesArgs = {
+                plyName = PlayerResource:GetPlayerName(playerID)
+            }
+
+            theVote.callback = function()
+                GameRules.ingame:balancePlayer(playerID, enemyTeam)
+            end
+        end,
+
+        -- Catching people up, level wise
+        votingBalanceTeamsLevelHeroes = function()
 			-- Ensure we are in a match
 			if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
 
-			-- Check number of players on other team
-			local enemyTeam = DOTA_TEAM_BADGUYS
-			if plyTeam == DOTA_TEAM_BADGUYS then
-				enemyTeam = DOTA_TEAM_GOODGUYS
-			end
-
-			local totalEnemies = 0
-			local maxPlayers = 24
-			for i=0,maxPlayers-1 do
-				local state = PlayerResource:GetConnectionState(i)
-
-				-- Are they are bot, or a CONNECTED player?
-				if state == 1 or state == 2 then
-					if PlayerResource:GetCustomTeamAssignment(i) == enemyTeam then
-						totalEnemies = totalEnemies + 1
-					end
-				end
-			end
-
-			if totalEnemies >= DOTA_MAX_TEAM_PLAYERS then
-				return 'voteErrorNoPlayerSlots'
-			end
-
-			theVote.voteDes = 'votingBalanceTeamsSwapSelfDesArgs'
-
-			theVote.voteDesArgs = {
-				plyName = PlayerResource:GetPlayerName(playerID)
-			}
+			theVote.voteDes = 'votingBalanceTeamsLevelHeroesDes'
+			theVote.voteDesArgs = {}
 
 			theVote.callback = function()
-				GameRules.ingame:balancePlayer(playerID, enemyTeam)
+				GameRules.ingame:balanceEXP()
 			end
 		end,
 

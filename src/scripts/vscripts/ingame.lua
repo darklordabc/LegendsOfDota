@@ -100,6 +100,33 @@ function Ingame:balancePlayer(playerID, newTeam)
     end
 end
 
+-- Balances the EXP of all players
+function Ingame:balanceEXP()
+    local highestLevel = 1
+    local maxPlayers = 24
+    for playerID=0,maxPlayers-1 do
+        local level = PlayerResource:GetLevel(playerID)
+        if level > highestLevel then
+            highestLevel = level
+        end
+    end
+
+    -- Loop over each player
+    for playerID=0,maxPlayers-1 do
+        local level = PlayerResource:GetLevel(playerID)
+        if level < highestLevel then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            if IsValidEntity(hero) then
+                -- How much EXP do we need to add to level them to the highest player's level?
+                local exp = constants.XP_PER_LEVEL_TABLE[highestLevel] - constants.XP_PER_LEVEL_TABLE[level]
+
+                -- ADd the experience
+                hero:AddExperience(exp, false, false)
+            end
+        end
+    end
+end
+
 --[[-- Sets it to no team balancing is required
 function Ingame:setNoTeamBalanceNeeded()
     -- Store state informatiion about team balance
