@@ -160,3 +160,11 @@
 .niceButton:hover {
     wash-color: #FFFFFFFF;
 }
+
+/*
+	Toggle thingo
+*/
+
+#votingItemToggle {
+	visibility: collapse;
+}

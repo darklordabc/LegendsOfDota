@@ -486,6 +486,9 @@
     "votingChangeOptionsSpeed"                      "Game Speed"
     "votingChangeOptionsSpeedDes"                   "Change options that affect the speed of gameplay."
 
+    "votingChangeOptionsOther"                      "Other"
+    "votingChangeOptionsOtherDes"                   "Change various other options including enabling all vision, wtf mode and global shop."
+
     "votingGiveupCallGG"                            "Call GG"
     "votingGiveupCallGGDes"                         "Surrender, make your team lose, call GG."
 
@@ -537,6 +540,17 @@
     "votingOptionsBuybackCooldownAmountDes"         "The length of the buyback duration, default is 420 seconds."
 
     "votingOptionsBuybackCooldownAmountDesArgs"     "Change the buyback cooldown to {amount} seconds."
+
+    "votingOptionsAllVision"                        "All Vision"
+    "votingOptionsAllVisionDes"                     "Enable or disable All Vision. This removes the fog of war, allowing everyone to see everything."
+    "votingOptionsAllVisionEnabled"                 "All Vision Enabled?"
+    "votingOptionsAllVisionEnabledDes"              "Do you want all vision to be enabled?"
+
+    "votingOptionsAllVisionDesEnable"               "Enable all vision, removing fog of war and allowing everyone to see everything."
+    "votingOptionsAllVisionDesDisable"              "Disable all vision, adding fog of war and allowing people to only see their own team's vision."
+
+    "votingOptionsAllVisionAlreadyEnabled"          "All vision is already enabled."
+    "votingOptionsAllVisionAlreadyDisabled"         "All vision is already disabled."
 
     "votingOptionsModifiers"                        "Change Gold & XP Modifiers"
     "votingOptionsModifiersDes"                     "Changes the percentage of gold and XP that each player gets to killing units."

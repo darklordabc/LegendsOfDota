@@ -13,6 +13,9 @@
 			<Label id="votingItemDes" />
 
 			<Panel id="votingItemSlider" />
+            <Panel id="votingItemToggle">
+                <ToggleButton id="votingItemToggleToggler" />
+            </Panel>
 		</Panel>
 
 		<Panel class="votingVoteCreationItemIcon" />

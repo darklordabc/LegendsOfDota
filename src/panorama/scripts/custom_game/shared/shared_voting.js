@@ -42,7 +42,12 @@ var votingMenus = {
 				title: 'votingChangeOptionsSpeed',
 				des: 'votingChangeOptionsSpeedDes',
 				link: 'changeOptionsSpeed'
-			}
+			},
+			{
+				title: 'votingChangeOptionsOther',
+				des: 'votingChangeOptionsOtherDes',
+				link: 'changeOptionsOther'
+			},
 		]
 	},
 	changeOptionsSpeed: {
@@ -156,6 +161,35 @@ var votingMenus = {
 					}
 				]
 			},
+		]
+	},
+	changeOptionsOther: {
+		items: [
+			{
+				title: 'votingGoBack',
+				des: 'votingGoBackDes',
+				link: 'changeOptions'
+			},
+			{
+				title: 'votingOptionsAllVision',
+				des: 'votingOptionsAllVisionDes',
+				confirmVote: true,
+				back: 'changeOptionsOther',
+				options: [
+					{
+						title: 'votingOptionsAllVisionEnabled',
+						des: 'votingOptionsAllVisionEnabledDes',
+
+						fieldName: 'enabled',
+						sort: 'toggle',
+						default: 1,
+						linkTo: 'lodOptionCrazyAllVision',
+
+						textOff: 'lodOptionNo',
+						textOn: 'lodOptionYes'
+					}
+				]
+			}
 		]
 	},
 	gameplay: {

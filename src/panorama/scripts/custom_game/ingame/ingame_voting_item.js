@@ -40,6 +40,7 @@ function onVoteOptionPressed() {
 	}
 }
 
+// Adds a slider to the panel
 function addSliderInput(sliderStep, sliderMin, sliderMax, sliderDefault, callback) {
 	var con = $('#votingItemSlider');
 
@@ -60,6 +61,50 @@ function addSliderInput(sliderStep, sliderMin, sliderMax, sliderDefault, callbac
     sliderPanelCon.initSlider(sliderStep, sliderMin, sliderMax, sliderDefault);
 }
 
+// Stores the text
+var noText = '';
+var yesText = '';
+
+// Adds the "yes" / "no" toggle thingo
+function addToggleInput(defaultValue, noTextNew, yesTextNew, callback) {
+    // Make the toggler visible
+    $('#votingItemToggle').visible = true;
+
+    // Store the text
+    noText = noTextNew;
+    yesText = yesTextNew;
+
+    // Set the default value
+    $('#votingItemToggleToggler').checked = defaultValue == 1;
+
+    // Update the toggler text
+    updateTogglerText();
+
+    // Add the callback
+    $('#votingItemToggleToggler').SetPanelEvent('onactivate', function() {
+        var checked = $('#votingItemToggleToggler').checked;
+        var checkedValue = 1;
+        if(!checked) checkedValue = 0;
+
+        // Run the callback
+        callback(checkedValue);
+
+        // Update the text
+        updateTogglerText();
+    });
+}
+
+function updateTogglerText() {
+    var toggler = $('#votingItemToggleToggler');
+
+    var msg = '';
+    if(toggler.checked) {
+        toggler.text = yesText;
+    } else {
+        toggler.text = noText;
+    }
+}
+
 // Do stuff
 (function() {
 	// Grab the main panel
@@ -68,4 +113,5 @@ function addSliderInput(sliderStep, sliderMin, sliderMax, sliderDefault, callbac
     // Define exports
     mainPanel.parseInfo = parseInfo;
     mainPanel.addSliderInput = addSliderInput;
+    mainPanel.addToggleInput = addToggleInput;
 })();

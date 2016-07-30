@@ -246,6 +246,44 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
         	end
 		end,
 
+        votingOptionsAllVision = function()
+            -- Ensure we are in a match
+            if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 'voteErrorNotInMatch' end
+
+            -- Ensure we have some valid vote data
+            local enabled = voteData.enabled
+
+            if type(enabled) ~= 'number' then return 'voteErrorInvalidData' end
+            if enabled ~= 1 and enabled ~= 0 then return 'voteErrorInvalidData' end
+
+            if enabled then
+                theVote.voteDes = 'votingOptionsAllVisionDesEnable'
+            else
+                theVote.voteDes = 'votingOptionsAllVisionDesDisable'
+            end
+
+            -- Vote won't do anything
+            if GameRules.pregame.optionStore['lodOptionCrazyAllVision'] == enabled then
+                if enabled then
+                    return 'votingOptionsAllVisionAlreadyEnabled'
+                else
+                    return 'votingOptionsAllVisionAlreadyDisabled'
+                end
+            end
+
+            -- No args
+            theVote.voteDesArgs = {}
+
+            -- Callback
+            theVote.callback = function()
+                -- Change all vision
+                Convars:SetBool('dota_all_vision', enabled == 1)
+
+                -- Update options
+                GameRules.pregame:updateOption('lodOptionCrazyAllVision', enabled)
+            end
+        end,
+
 		--[[
 			GAMEPLAY
 		]]

@@ -119,7 +119,7 @@ function votingAddRange(info, storeInto) {
 
 	// Grab the default
 	var defaultValue = info.default;
-	if(info.linkTo && Game.shared.optionValueList[info.linkTo]) {
+	if(info.linkTo && Game.shared.optionValueList[info.linkTo] != null) {
 		defaultValue = Game.shared.optionValueList[info.linkTo];
 	}
 
@@ -131,6 +131,34 @@ function votingAddRange(info, storeInto) {
     pan.BLoadLayout('file://{resources}/layout/custom_game/ingame/ingame_voting_item_basic.xml', false, false);
     pan.parseInfo(info);
     pan.addSliderInput(info.step, info.min, info.max, defaultValue, function(newValue) {
+    	storeInto[info.fieldName] = newValue;
+    });
+}
+
+// Adds a voting toggle button
+function votingAddToggle(info, storeInto) {
+	// Grab the main panel
+	var panelVoteCreation = $('#votingVoteCreationMenu');
+
+	// Grab the default
+	var defaultValue = info.default;
+	if(info.linkTo && Game.shared.optionValueList[info.linkTo] != null) {
+		// The aim of a toggle is to change the value, so, invert the currently selected value
+		if(Game.shared.optionValueList[info.linkTo] == 0) {
+			defaultValue = 1;
+		} else {
+			defaultValue = 0;
+		}
+	}
+
+	// Store the default value
+	storeInto[info.fieldName] = defaultValue;
+
+	// Create the new panel
+	var pan = $.CreatePanel('Panel', panelVoteCreation, 'votingSubMenu_' + info.title);
+    pan.BLoadLayout('file://{resources}/layout/custom_game/ingame/ingame_voting_item_basic.xml', false, false);
+    pan.parseInfo(info);
+    pan.addToggleInput(defaultValue, $.Localize(info.textOff), $.Localize(info.textOn), function(newValue) {
     	storeInto[info.fieldName] = newValue;
     });
 }
@@ -168,6 +196,10 @@ function votingConfirmVote(info) {
 				case 'range':
 					votingAddRange(opt, data);
 				break;
+
+				case 'toggle':
+					votingAddToggle(opt, data);
+				break;
 			}
 		}
 	}
@@ -180,7 +212,7 @@ function votingConfirmVote(info) {
 			// Create the vote
 			createVote(info, data);
 		}
-	});
+	});;
 }
 
 // Creates a vote based on the given info
