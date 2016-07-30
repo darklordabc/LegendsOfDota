@@ -277,7 +277,7 @@
 			"02"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"mana_void_ministun"			"0.15"
+				"mana_void_ministun"			"0.3"
 			}
 			
 			"03"
@@ -462,6 +462,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.3"
@@ -594,7 +596,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"14.0 14.0 14.0 14.0"
+		"AbilityCooldown"				"14 13 12 11"
 
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
@@ -631,6 +633,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -783,7 +787,6 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"1"
 
 		// Casting
@@ -852,7 +855,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"30 25 20 15"
+		"AbilityCooldown"				"25 21 17 13"
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -914,12 +917,12 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_movement_speed"		"10 20 30 40"
+				"bonus_movement_speed"		"16 24 32 40"
 			}			
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_damage"				"10 20 30 40"
+				"bonus_damage"				"16 24 32 40"
 			}		
 			"04"
 			{
@@ -956,6 +959,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.4"
@@ -988,7 +993,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"movement_damage_pct"		"20 40 60"
+				"movement_damage_pct"		"26 42 60"
 			}
 			"03"
 			{
@@ -1008,12 +1013,12 @@
 			"06"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"max_charges"		"2"
+				"max_charges_scepter"		"2"
 			}
 			"07"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"charge_restore_time"		"40"
+				"charge_restore_time_scepter"		"40"
 			}
 		}
 	}
@@ -1058,7 +1063,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_movement_speed"	"-15 -30 -45 -60"
+				"frost_arrows_movement_speed"	"-16 -32 -48 -64"
 			}
 			"02"
 			{
@@ -1092,7 +1097,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"13.0 13.0 13.0 13.0"
+		"AbilityCooldown"				"13"
 		"AbilityDuration"				"3.0 4.0 5.0 6.0"
 
 		// Damage.
@@ -1231,6 +1236,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 
+		"HasScepterUpgrade"			"1"
+
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -1335,6 +1342,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+		"HasScepterUpgrade"			"1"
 		
 
 		// Casting
@@ -1373,7 +1382,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"scepter_distance"			"900"
+				"distance_scepter"			"900"
 			}
 			"04"
 			{
@@ -1466,17 +1475,17 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"echo_slam_damage_range"	"575"
+				"echo_slam_damage_range"	"600"
 			}
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"echo_slam_echo_search_range" "575"
+				"echo_slam_echo_search_range" "600"
 			}
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"echo_slam_echo_range"		"575"
+				"echo_slam_echo_range"		"600"
 			}
 			"04"
 			{
@@ -1629,6 +1638,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -1735,7 +1746,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"slow_duration"				"1.0 2.0 3.0 4.0"
+				"slow_duration"				"1.75 2.5 3.25 4.0"
 			}
 			"04"
 			{
@@ -1768,7 +1779,7 @@
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"13.0 10.0 7.0 4.0"
-		"AbilityCastRange"				"128"
+		"AbilityCastRange"				"150"
 		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
 
 		// Special
@@ -1783,7 +1794,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage_bonus"				"25 40 55 70"
+				"damage_bonus"				"25 45 65 85"
 			}
 			"03"
 			{
@@ -1889,6 +1900,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -1981,7 +1994,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"8.5"
+		"AbilityCooldown"				"8.0"
 		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
 
 		// Damage.
@@ -2131,6 +2144,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"							// Changes dynamically with scepter	
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -2350,6 +2365,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -2599,6 +2616,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -2634,7 +2653,7 @@
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"scepter_interval"	"8.0"
+				"interval_scepter"	"8.0"
 			}
 		}
 	}
@@ -2975,6 +2994,7 @@
 		"MaxLevel"						"1"
 		"FightRecapLevel"				"1"
 		"IsGrantedByScepter"			"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -2983,7 +3003,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"70"
+		"AbilityCooldown"				"60"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -3047,11 +3067,11 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.67 0.67 0.67 0.67"
+		"AbilityCastPoint"				"0.67"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0 10.0 10.0 10.0"
+		"AbilityCooldown"				"10"
 
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
@@ -3099,11 +3119,11 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.67 0.67 0.67 0.67"
+		"AbilityCastPoint"				"0.67"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0 10.0 10.0 10.0"
+		"AbilityCooldown"				"10"
 
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
@@ -3151,11 +3171,11 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.67 0.67 0.67 0.67"
+		"AbilityCastPoint"				"0.67"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0 10.0 10.0 10.0"
+		"AbilityCooldown"				"10"
 
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
@@ -3197,6 +3217,7 @@
 		"ID"					"5062"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"OnCastbar"					"0"
+		"HasScepterUpgrade"			"1"
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -3210,7 +3231,7 @@
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"necromastery_max_souls"	"15 22 29 36"
+				"necromastery_max_souls"	"18 24 30 36"
 			}
 			"03"
 			{
@@ -3278,6 +3299,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -3285,7 +3307,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"120.0 110.0 100.0"
+		"AbilityCooldown"				"120 110 100"
 		"AbilityDuration"				"5.0 5.0 5.0"
 
 		// Damage.
@@ -3367,12 +3389,12 @@
 			"13"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"requiem_heal_scepter_pct"	"100"
+				"requiem_heal_pct_scepter"	"100"
 			}	
 			"14"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"requiem_damage_scepter_pct"	"40"
+				"requiem_damage_pct_scepter"	"40"
 			}		
 		}
 	}
@@ -3805,6 +3827,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -3926,6 +3949,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -4024,7 +4048,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"rot_slow"				"-27"
+				"rot_slow"				"-30"
 			}
 		}
 	}
@@ -4054,7 +4078,7 @@
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityChannelTime"			"3.0 3.0 3.0"
-		"AbilityCooldown"				"30.0 30.0 30.0"
+		"AbilityCooldown"				"30 25 20"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -4070,7 +4094,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"strength_damage"		"0.3 0.4 0.5"
+				"strength_damage"		"0.3 0.45 0.6"
 			}
 		}
 	}
@@ -4243,6 +4267,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -4274,17 +4299,17 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"splash_damage"	"75"
+				"splash_damage"	"100"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_min"			"40 55 70"
+				"damage_min"			"40 60 80"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_max"			"45 60 75"
+				"damage_max"			"45 65 85"
 			}
 			"06"
 			{
@@ -4493,6 +4518,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -4537,7 +4563,7 @@
 			"05"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"			"37 50 63"		
+				"damage"			"40 55 70"		
 			}
 			"06"
 			{
@@ -4620,7 +4646,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blast_dot_damage"		"15 30 40 50"
+				"blast_dot_damage"		"20 35 50 65"
 			}
 			
 			
@@ -4721,6 +4747,8 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -4972,7 +5000,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"damage"					"25"
+				"damage"					"14"
 			}
 			"02"
 			{
@@ -5240,6 +5268,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"				"1"
+
+		"HasScepterUpgrade"				"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -5266,7 +5296,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"scepter_aoe"		"900"		
+				"radius_scepter"		"900"		
 			}
 			"03"
 			{
@@ -5343,6 +5373,7 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 
 		
 		// Casting
@@ -5391,7 +5422,7 @@
 			"06"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"scepter_radius"	"475"
+				"radius_scepter"	"475"
 			}
 		}
 	}
@@ -5412,7 +5443,7 @@
 		
 		/ Damage.
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"30 50 70 90"
+		"AbilityDamage"					"40 60 80 100"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -5425,7 +5456,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"overload_aoe"					"275"
+				"overload_aoe"					"300"
 			}
 			
 			"02"
@@ -5538,6 +5569,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -5616,7 +5648,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"40.0 30.0 20.0 10.0"
+		"AbilityCooldown"				"34 26 18 10"
 		"AbilityChannelTime"			"50"
 		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
 
@@ -5725,14 +5757,14 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"140.0 120.0 100.0"
+		"AbilityCooldown"				"120 110 100"
 		"AbilityDuration"				"3.0 3.0 3.0"
 		"AbilityChannelTime"			"2.0 2.0 2.0"
 		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"175 250 325"
+		"AbilityManaCost"				"150 225 300"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -5860,7 +5892,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"9"
+		"AbilityCooldown"				"8"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -5887,7 +5919,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"275 275 275 275"
+				"radius"				"275"
 			}
 			"04"
 			{
@@ -5970,6 +6002,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 
+		"HasScepterUpgrade"			"1"
+
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -6048,7 +6082,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"1.75 1.75 1.75 1.75"
+		"AbilityCooldown"				"1.6"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -6193,6 +6227,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.4 0.4 0.4 0.4"
@@ -6306,7 +6342,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"8.0 8.0 8.0 8.0"
+		"AbilityCooldown"				"8"
 		"AbilityDuration"				"1.6 1.9 2.2 2.5"
 
 		// Damage.
@@ -6461,6 +6497,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -6824,6 +6861,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"700 950 1200"
@@ -6902,7 +6941,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"radius"			"400"
+				"radius"			"425"
 			}
 			"02"
 			{
@@ -6945,7 +6984,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"500"
+		"AbilityCastRange"				"525"
 		"AbilityCastPoint"				"0.3 0.3 0.3 0.3"
 		
 		// Time		
@@ -7040,6 +7079,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -7289,7 +7330,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"15.0 15.0 15.0 15.0"
+		"AbilityCooldown"				"14"
 		"AbilityDuration"				"3 4 5 6"
 	
 		// Cost
@@ -7346,6 +7387,8 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -7505,7 +7548,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"slow_attack_speed"		"-20 -20 -20 -20"
+				"slow_attack_speed"		"-30"
 			}
 			"04"
 			{
@@ -7569,6 +7612,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -7644,12 +7689,12 @@
 			"11"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"slow_movement_speed_scepter"	"-30"
+				"slow_movement_speed_scepter"	"-50"
 			}
 			"12"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"slow_attack_speed_scepter"		"-30"
+				"slow_attack_speed_scepter"		"-50"
 			}
 		}			
 	}
@@ -7861,6 +7906,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"600"
@@ -7892,7 +7939,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"scepter_bounces"			"4 4 4"
+				"bounces_scepter"			"4 4 4"
 			}
 			"04"
 			{
@@ -7925,7 +7972,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"75 80 85 90"
+		"AbilityManaCost"				"90"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -7998,7 +8045,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_damage"					"60 80 100 120"
+				"bonus_damage"				"55 70 85 100"
 			}
 		}
 	}
@@ -8267,9 +8314,11 @@
 		"ID"					"5149"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -8292,7 +8341,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"far_damage"			"55 110 165"
+				"far_damage"			"50 100 150"
 			}
 			"02"
 			{
@@ -8317,7 +8366,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"near_damage"			"55 110 165"
+				"near_damage"			"50 100 150"
 			}
 			"07"
 			{
@@ -8351,6 +8400,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -8417,6 +8467,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -8452,6 +8503,11 @@
 			{
 				"var_type"			"FIELD_INTEGER"
 				"speed"				"900 900 900 900"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"targets_scepter"	"4 4 4 4"
 			}
 		}
 	}
@@ -8591,7 +8647,7 @@
 
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"15 30 45 60"
+		"AbilityDamage"					"15 35 55 75"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -8836,19 +8892,19 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1200"
+		"AbilityCastRange"				"900"
 
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"aura_radius"		"1200"		// If you change this, also change the AbilityCastRange above
+				"aura_radius"		"900"		// If you change this, also change the AbilityCastRange above
 			}
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"aura_damage"		"-0.6 -0.9 -1.2 -1.5" 
+				"aura_damage"		"-0.6 -1.0 -1.4 -1.8" 
 			} 
 		}
 	}
@@ -8904,6 +8960,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -9045,7 +9103,6 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
 		"FightRecapLevel"				"1"
 
 		// Casting
@@ -9161,6 +9218,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -9269,7 +9327,7 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
+				"var_type"				"FIELD_FLOAT"
 				"damage"				"40 50 60"
 			}
 			"02"
@@ -9385,7 +9443,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"15"
+		"AbilityManaCost"				"25"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -9444,7 +9502,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"15"
+		"AbilityManaCost"				"25"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -9463,7 +9521,7 @@
 		"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"boar_damage_tooltip"				"15 30 45 60"
+				"boar_damage_tooltip"				"10 25 40 55"
 			}
 		"04"
 			{
@@ -9530,7 +9588,7 @@
 		"ID"					"5171"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -9632,6 +9690,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.5 0.5 0.5"
@@ -9665,12 +9725,12 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage"					"200 250 300"
+				"damage"					"150 225 300"
 			}
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"side_damage"				"200 250 300"
+				"side_damage"				"150 225 300"
 			}
 			"04"
 			{
@@ -9882,6 +9942,7 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -10083,7 +10144,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"ward_damage_tooltip"	"10 19 29 38"
+				"ward_damage_tooltip"	"13 22 31 40"
 			}
 		}
 	}
@@ -10101,6 +10162,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -10297,7 +10360,7 @@
 		
 		"AbilityCastPoint"				"0.1"
 		"AbilityCooldown"				"40 34 28 22"
-		"AbilityManaCost"				"50"	
+		"AbilityManaCost"				"75"	
 				
 		
 		// Special
@@ -10334,6 +10397,8 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -10409,7 +10474,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"5.5 5.5 5.5 5.5"
+		"AbilityCooldown"				"5"
 
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
@@ -10575,6 +10640,7 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -10681,7 +10747,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"base_damage"			"60"
+				"base_damage"			"75"
 			}
 			"05"
 			{
@@ -10707,7 +10773,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CUSTOM"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -10937,7 +11003,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"attack_spill_width"				"68 68 68 68"
+				"attack_spill_width"		"75"
 			}
 		}
 	}	
@@ -10989,7 +11055,7 @@
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"movement_speed_max_tooltip"			"50"
+				"movement_speed_max_tooltip"			"60"
 			}
 			"05"
 			{
@@ -11048,7 +11114,7 @@
 			}
 			"04"
 			{
-				"var_type"					"FIELD_INTEGER"
+				"var_type"					"FIELD_FLOAT"
 				"movement_speed_bonus_stage"		"-5"
 			}	
 		}
@@ -11099,7 +11165,7 @@
 			}
 			"04"
 			{
-				"var_type"					"FIELD_INTEGER"
+				"var_type"					"FIELD_FLOAT"
 				"movement_speed_bonus_stage"		"-5"
 			}
 		}
@@ -11267,6 +11333,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"500"
@@ -11312,7 +11380,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cooldown_scepter"		"12"
+				"cooldown_scepter"		"10"
 			}
 			"07"
 			{
@@ -11355,7 +11423,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.6 0.6 0.6 0.6"
+		"AbilityCastPoint"				"0.6"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -11380,7 +11448,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"stun_duration"			"0.6 0.6 0.6 0.6"
+				"stun_duration"			"0.8"
 			}
 		}
 	}
@@ -11465,6 +11533,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -12013,6 +12083,8 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -12138,7 +12210,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.3 0.3 0.3 0.3"
+		"AbilityCastPoint"				"0.2"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -12180,7 +12252,7 @@
 			"06"
 			{	
 				"var_type"			"FIELD_INTEGER"
-				"cogs_radius"			"200"
+				"cogs_radius"			"215"
 			}
 			"07"
 			{
@@ -12232,7 +12304,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"radius"			"575 575 575 575"
+				"radius"			"600"
 			}
 			"02"
 			{	
@@ -12265,6 +12337,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -12519,6 +12593,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0 0 0 0"
@@ -12688,6 +12764,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Unit Targeting
 		//-------------------------------------------------------------------------------------------------------------
@@ -12960,6 +13038,8 @@
 		"MaxLevel"						"1"
 		"FightRecapLevel"				"1"
 		"IsGrantedByScepter"			"1"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -13275,6 +13355,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -13364,7 +13446,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"40.0 35.0 30.0 25.0"
+		"AbilityCooldown"				"40 35 30 25"
 		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
 		
 		// Cost
@@ -13405,7 +13487,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"630"
+		"AbilityCastRange"				"640"
 		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
 
 		// Time		
@@ -13659,6 +13741,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"150"
@@ -13834,6 +13918,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"FightRecapLevel"				"1"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -14031,6 +14117,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -14254,6 +14342,8 @@
 		"ID"							"5278"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -14635,12 +14725,12 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_movespeed"		"-18 -22 -26 -30"
+				"bonus_movespeed"		"-15 -20 -25 -30"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_attackspeed"		"-25 -27 -29 -31"
+				"bonus_attackspeed"		"-15 -20 -25 -30"
 			}
 			"04"
 			{
@@ -14740,7 +14830,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_gold_self"		"200 275 350"
+				"bonus_gold_self"		"150 250 350"
 			}
 			"05"
 			{
@@ -14936,6 +15026,8 @@
 
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		"AbilityCastPoint"				"0.3 0.3 0.3 0.3"
 		"AbilityCooldown"				"60 50 40"
 		"AbilityManaCost"				"150 75 0"	
@@ -15095,7 +15187,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"duration"					"1.0 1.4 1.8 2.2"
+				"duration"					"1.0 1.5 2.0 2.5"
 			}
 			"03"
 			{
@@ -15178,6 +15270,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -15468,6 +15562,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -15514,7 +15610,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"scepter_damage"		"100"
+				"damage_scepter"		"100"
 			}
 		}
 	}
@@ -15668,6 +15764,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"5330"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -16100,7 +16198,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"burn_damage"			"40"
+				"burn_damage"			"25 30 35 40"
 			}
 			"02"
 			{
@@ -16136,6 +16234,8 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -16144,7 +16244,7 @@
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"550 550 550"
-		"AbilityCooldown"				"125.0"
+		"AbilityCooldown"				"145.0"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -16385,6 +16485,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.01 0.01 0.01"
@@ -16617,7 +16719,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"damage"				"22 28 34 40"
+				"damage"				"22 30 38 46"
 			}
 			"03"
 			{
@@ -16668,6 +16770,7 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -16833,7 +16936,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"bonus_reset_time"				"15"
+				"bonus_reset_time"				"20"
 			}
 			"02"
 			{
@@ -16860,6 +16963,8 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"1"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -16889,8 +16994,8 @@
 			}
 			"03"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"duration"					"4"
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"4.0"
 			}
 			"04"
 			{
@@ -17091,7 +17196,7 @@
 			"04"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"fire_rate"						"1.4"
+				"fire_rate"						"1.2"
 			}
 			"05"
 			{
@@ -17114,6 +17219,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -17433,6 +17540,8 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.0"
@@ -17628,6 +17737,8 @@
 		"MaxLevel"						"4"
 		"LevelsBetweenUpgrades"					"5"
 		"RequiredLevel"						"1"
+
+		"HasScepterUpgrade"			"1"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -18144,7 +18255,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"spirit_damage"			"29 38 47 56 65 74 83 92"
+				"spirit_damage"			"22 32 42 52 62 72 82 92"
 				"levelkey"				"exortlevel"
 			}
 			"02"
@@ -18402,7 +18513,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"		"14 21 28 35"
+				"damage"		"14 22 30 38"
 			}
 			"02"
 			{
@@ -18490,7 +18601,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"30.0 24.0 18.0 12.0"
+		"AbilityCooldown"				"30 24 18 12"
 		"AbilityManaCost"				"115"
 
 		// Stats
@@ -18532,6 +18643,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -18609,7 +18721,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"int_steal_duration"		"50"
+				"int_steal_duration"		"80"
 			}
 		}
 	}	
@@ -18665,7 +18777,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"		"75 150 225 300"
+				"damage"		"100 175 250 325"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_range_tooltip"	"225 350 475 600"
 			}
 		}
 	}	
@@ -18694,7 +18811,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bonus_mana"	    "75 150 225 300"
+				"bonus_mana"	    "125 200 275 350"
 			}
 			"03"
 			{
@@ -18785,6 +18902,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -19097,6 +19215,8 @@
 		"ID"					"5412"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"DisplayAdditionalHeroes"	"1"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -19694,6 +19814,8 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"140 120 100"
@@ -19714,7 +19836,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"duration"					"15 17 19"
+				"duration"					"16 18 20"
 			}
 			"02"
 			{
@@ -19756,7 +19878,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage"					"50"
+				"damage"					"50 100 150"
 			}
 			"02"
 			{
@@ -19840,7 +19962,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage"					"500"
+				"damage"					"850"
 			}
 			"02"
 			{
@@ -20006,7 +20128,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"illusion_duration"			"6 8 10 12"
+				"illusion_duration"			"8 10 12 14"
 			}
 			"03"
 			{
@@ -20187,6 +20309,7 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -20415,7 +20538,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"140.0 140.0 140.0"
+		"AbilityCooldown"				"130"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -20577,7 +20700,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		
-		"AbilityDamage"					"8 16 24 32"
+		"AbilityDamage"					"10 20 30 40"
 
 		"AbilityDuration"				"2"
 
@@ -20615,6 +20738,8 @@
 		"DisplayAdditionalHeroes"	"1"
 		"LevelsBetweenUpgrades"		"7"
 		"RequiredLevel"			"3"
+
+		"HasScepterUpgrade"			"1"
 			
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -20796,7 +20921,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"32.0 26.0 20.0 14.0"
+		"AbilityCooldown"				"30 24 18 12"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -20843,6 +20968,8 @@
 		
 		"AbilityCastPoint"				"0.5 0.5 0.5 0.5"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"				"1"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -20889,6 +21016,7 @@
 		"MaxLevel"						"1"
 		"FightRecapLevel"				"1"
 		"IsGrantedByScepter"			"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -20969,7 +21097,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"multicast_delay"	"0.4"
+				"multicast_delay"	"0.5"
 			}
 		}
 	}
@@ -20990,6 +21118,8 @@
 		"MaxLevel"						"1"
 		"FightRecapLevel"				"1"
 		"IsGrantedByScepter"			"1"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -21020,7 +21150,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"multicast_delay"	"0.4"
+				"multicast_delay"	"0.5"
 			}
 
 			"03"
@@ -21057,7 +21187,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"95 105 115 125"
+		"AbilityManaCost"				"90"
 				
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -21089,7 +21219,7 @@
 			"05"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"multicast_delay"	"0.4"
+				"multicast_delay"	"0.5"
 			}	
 		}
 	}
@@ -21119,7 +21249,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"75"
+		"AbilityManaCost"				"50"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -21253,9 +21383,11 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		
-		"AbilityCastRange"				"625"
+		"AbilityCastRange"				"650"
 		"AbilityCastPoint"				"0.45 0.45 0.45 0.45"
 		"FightRecapLevel"				"1"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -21283,7 +21415,7 @@
 			"03"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"decay_duration"				"40.0"
+				"decay_duration"				"45"
 			}
 			"04"
 			{
@@ -21813,6 +21945,8 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"				"1"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.1 0.1 0.1 0.1"
@@ -22091,6 +22225,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -22389,6 +22525,8 @@
 		"FightRecapLevel"				"1"
 		"IsGrantedByScepter"			"1"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"1.0"
@@ -22651,6 +22789,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
+
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -22888,7 +23028,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"19.0 18.0 17.0 16.0"
+		"AbilityCooldown"				"17 16 15 14"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -22955,6 +23095,8 @@
 		"ID"							"5474"							// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+
+		"HasScepterUpgrade"			"1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -23114,6 +23256,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"1800"
@@ -23232,7 +23376,7 @@
 
 		// Cast Range
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"600 600 600 600"
+		"AbilityCastRange"				"650"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -23356,13 +23500,13 @@
 		{
 			"01"
 			{
-				"var_type"							"FIELD_INTEGER"
-				"bonus_armor"						"1 2 4 5"
+				"var_type"							"FIELD_FLOAT"
+				"bonus_armor"						"1.5 3 4.5 6"
 			}
 			"02"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"bonus_resist"						"3 6 12 16"
+				"bonus_resist"						"5 10 15 20"
 			}
 			"03"
 			{
@@ -23387,6 +23531,7 @@
 		"ID"							"5483"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -23474,7 +23619,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"26.0"
+		"AbilityCooldown"				"20.0"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -23560,7 +23705,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"movespeed"					"14 15 16 17"
+				"movespeed"					"13 14 15 16"
 			}
 			"03"
 			{
@@ -23965,7 +24110,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"pounce_damage"			"50 100 150 200"
+				"pounce_damage"			"40 80 120 160"
 			}
 			"06"
 			{
@@ -24331,7 +24476,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_hp"				"100"
+				"bonus_hp"				"0"
 			}
 			"02"
 			{
@@ -24341,7 +24486,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"3"
+				"bonus_armor"			"6"
 			}
 			"04"
 			{	
@@ -24351,7 +24496,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"base_attack_time"		"1.55"
+				"base_attack_time"		"1.50"
 			}	
 			"07"
 			{
@@ -24389,7 +24534,7 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"900"
+		"AbilityCastRange"				"1000"
 		"AbilityCastPoint"				"0.2 0.2 0.2 0.2"
 
 		// Time		
@@ -24418,7 +24563,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"axe_range"					"945.0"
+				"axe_range"					"1000.0"
 			}
 			"04"
 			{
@@ -24642,7 +24787,7 @@
 
 		// Stats		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"6.0"
+		"AbilityCooldown"				"5.0"
 		"AbilityCastRange"				"150 150 150 150"
 		"AbilityCastPoint"				"0.5 0.5 0.5 0.5"
 
@@ -24709,6 +24854,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"90.0 75.0 60.0"
@@ -24743,7 +24890,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"slow_duration"		"1.5"
+				"slow_duration"		"1.8"
 			}
 			"05"
 			{
@@ -24838,6 +24985,8 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -24878,7 +25027,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"cleave_radius"			"200"
+				"cleave_radius"			"240"
 			}
 			"05"
 			{
@@ -24888,7 +25037,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"splash_radius"			"200"
+				"splash_radius"			"240"
 			}
 			"07"
 			{
@@ -25123,7 +25272,7 @@
 			"03"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage_radius"		"225 225 225 225"
+				"radius"		"225 225 225 225"
 			}
 			"04"
 			{	
@@ -25189,6 +25338,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -25270,6 +25420,7 @@
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"3"
 		"IsGrantedByScepter"			"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -25392,6 +25543,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"600"
@@ -25447,7 +25600,7 @@
 			"08"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"700"
+				"radius_scepter"				"700"
 			}
 		}
 	}
@@ -25933,6 +26086,7 @@
 		"MaxLevel"						"1"
 		"FightRecapLevel"				"1"
 		"IsGrantedByScepter"			"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -26089,7 +26243,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"slow_radius"		"200"
+				"slow_radius"		"250"
 			}
 			"03"
 			{
@@ -26183,6 +26337,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"1200"
@@ -26223,12 +26379,12 @@
 			"05"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"scepter_cooldown"	"20 10 5"
+				"cooldown_scepter"	"20 10 5"
 			}
 			"06"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"scepter_duration"	"12"
+				"duration_scepter"	"12"
 			}
 		}
 	}
@@ -26251,7 +26407,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.452 0.452 0.452 0.452"
+		"AbilityCastPoint"				"0.35"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -26399,6 +26555,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -26708,6 +26866,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
 
+		"HasScepterUpgrade"			"1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"2400"
@@ -26836,7 +26996,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_per_hero"		"20 35 50 65"
+				"damage_per_hero"		"20 40 60 80"
 			}
 			"04"
 			{
@@ -26910,7 +27070,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"attack_speed"			"60 80 100 120"
+				"attack_speed"			"65 90 115 140"
 			}
 			"03"
 			{
@@ -26932,7 +27092,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"2.6 2.0 1.4 0.8"
+		"AbilityCooldown"				"2.3 1.8 1.3 0.8"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -26971,6 +27131,8 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -27471,7 +27633,7 @@
 			"09"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"slow_duration"			"2.0"
+				"slow_duration"			"1.4 1.6 1.8 2.0"
 			}
 		}
 	}
@@ -27492,6 +27654,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -27564,6 +27728,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"						"1"
+
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -27617,6 +27782,8 @@
 		"MaxLevel"						"1"
 		"FightRecapLevel"				"1"
 		"IsGrantedByScepter"			"1"
+
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -27676,7 +27843,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"80.0"
+		"AbilityCooldown"				"100 90 80"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -28051,7 +28218,7 @@
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"80"
+		"AbilityManaCost"				"70"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -28060,7 +28227,7 @@
 			"01"
 			{
 				"var_type"							"FIELD_FLOAT"
-				"illusion_duration"					"32.0"
+				"illusion_duration"					"34.0"
 			}
 			"02"
 			{
@@ -28075,12 +28242,12 @@
 			"04"
 			{
 				"var_type"							"FIELD_FLOAT"
-				"illusion_incoming_damage"			"325.0"
+				"illusion_incoming_damage"			"300.0"
 			}
 			"05"
 			{
 				"var_type"							"FIELD_FLOAT"
-				"illusion_incoming_damage_total_tooltip"			"425.0"
+				"illusion_incoming_damage_total_tooltip"			"400.0"
 			}	
 		}
 	}
@@ -28105,7 +28272,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"50"
+		"AbilityManaCost"				"100"
 
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -28124,7 +28291,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"base_attack_time"		"1.6"
+				"base_attack_time"		"1.5"
 			}
 			"04"
 			{
@@ -28347,7 +28514,7 @@
 			"07"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"dps"				"10 30 50 70"
+				"damage_per_second"				"10 30 50 70"
 			}
 			"08"
 			{
@@ -28382,7 +28549,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20"
+		"AbilityCooldown"				"26"
 		"AbilityDuration"				"6.0"
 
 		// Cost
@@ -28401,12 +28568,12 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"base_dmg"			"15 20 25 30"
+				"base_damage"			"10 15 20 25"
 			}
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"hp_perc_dmg"		"1.25 2.5 3.75 5.0"
+				"hp_perc_damage"		"1.25 2.5 3.75 5.0"
 			}
 			"04"
 			{
@@ -28515,6 +28682,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -28637,7 +28805,7 @@
 			"07"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"dps"				"10 30 50 70"
+				"damage_per_second"				"10 30 50 70"
 			}
 			"08"
 			{
@@ -28778,10 +28946,11 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"750"
+		"AbilityCastRange"				"800"
 		"AbilityCastPoint"				"0.3"
 		
 		// Time		
@@ -33818,6 +33987,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"HasScepterUpgrade"				"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -33967,6 +34137,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_NONE"	
 
 		"MaxLevel"						"1"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -34243,6 +34414,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"		
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+		"HasScepterUpgrade"			"1"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -34469,7 +34642,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"90"
+		"AbilityCooldown"				"80"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -34561,7 +34734,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"18.0"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -34753,7 +34926,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"50 40 30"
+		"AbilityCooldown"				"40 35 30"
 
 
 		// Special	
@@ -34763,7 +34936,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"12 13 14"
+				"duration"				"12 14 16"
 			}
 		}
 	}
