@@ -84,7 +84,7 @@ function lodVoting:onPlyVoteCreate(eventSourceIndex, args)
     	voteDuration = maxVoteDuration,
     	endTime = Time() + maxVoteDuration,
     	playerID = playerID,
-    	maxNo = 0
+    	voteMode = constants.VOTE_COUNT_MODE_FAIR
 	}
 
 	-- Check vote info
@@ -259,7 +259,7 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 
 			if type(amount) ~= 'number' then return 'voteErrorInvalidData' end
 			if math.floor(amount) ~= amount then return 'voteErrorInvalidData' end
-            if amount < 1 or amount > 100000 then return 'voteErrorInvalidData' end
+            if amount < 1 or amount > 5000 then return 'voteErrorInvalidData' end
 
             -- Add the description
             theVote.voteDes = 'votingGameplayAddGoldDesArgs'
@@ -286,7 +286,7 @@ function lodVoting:checkVoteOptions(theVote, voteInfo, voteData)
 
 			if type(amount) ~= 'number' then return 'voteErrorInvalidData' end
 			if math.floor(amount) ~= amount then return 'voteErrorInvalidData' end
-            if amount < 1 or amount > 505000 then return 'voteErrorInvalidData' end
+            if amount < 1 or amount > 5000 then return 'voteErrorInvalidData' end
 
             -- Add the description
             theVote.voteDes = 'votingGameplayAddXPDesArgs'
@@ -543,6 +543,33 @@ function lodVoting:createVote(activeVoteInfo)
     self:checkVoteProgress()
 end
 
+-- Checks how many active players there are
+function lodVoting:getVotesRequired()
+    -- How many people are playing?
+    local totalPeople = 0
+    for i=0,24 do
+        if PlayerResource:GetConnectionState(i) == 2 then
+            totalPeople = totalPeople + 1
+        end
+    end
+
+    -- Work out how many votes are needed for this thing to pass
+    local votesRequired = totalPeople
+    if self.activeVoteInfo.voteMode == constants.VOTE_COUNT_MODE_FAIR then
+        votesRequired = math.ceil(totalPeople * 0.5 + 1)
+
+        if votesRequired > totalPeople then
+            votesRequired = totalPeople
+        end
+    end
+
+    -- Work out how many "no" votes are needed for this vote to fail
+    local votesForFail = totalPeople - votesRequired + 1
+
+    -- Return the info
+    return totalPeople, votesRequired, votesForFail
+end
+
 -- Checks the progress of a vote
 function lodVoting:checkVoteProgress(voteID)
 	-- Is this a relevant check?
@@ -551,23 +578,18 @@ function lodVoting:checkVoteProgress(voteID)
 		return
 	end
 
+    -- How many people are playing? How many votes do we need to pass it?
+    local totalPeople, votesRequired, votesForFail = self:getVotesRequired()
+
 	-- Check votes and percentages for early vote kill
-	if self.activeVoteInfo.totalNo > self.activeVoteInfo.maxNo then
+	if self.activeVoteInfo.totalNo >= votesForFail then
 		-- Got too many no, end it
 		self:endVote()
 		return
 	end
 
-	-- How many people are playing?
-	local totalPeople = 0
-	for i=0,24 do
-		if PlayerResource:GetConnectionState(i) == 2 then
-			totalPeople = totalPeople + 1
-		end
-	end
-
 	-- Has everyone voted?
-	if self.activeVoteInfo.totalYes + self.activeVoteInfo.totalNo >= totalPeople then
+	if self.activeVoteInfo.totalYes + self.activeVoteInfo.totalNo >= votesForFail then
 		-- Everyone has voted
 		self:endVote()
 		return
@@ -599,8 +621,11 @@ function lodVoting:endVote()
 		passed = false
 	end
 
+    -- How many people are playing? How many votes do we need to pass it?
+    local totalPeople, votesRequired, votesForFail = self:getVotesRequired()
+
 	-- Too many nos?
-	if self.activeVoteInfo.totalNo > self.activeVoteInfo.maxNo then
+	if self.activeVoteInfo.totalNo >= votesForFail then
 		passed = false
 	end
 

@@ -179,7 +179,7 @@ var votingMenus = {
 						sort: 'range',
 						step: 1,
 						min: 1,
-						max: 100000,
+						max: 5000,
 						default: 1000
 					}
 				]
@@ -198,7 +198,7 @@ var votingMenus = {
 						sort: 'range',
 						step: 1,
 						min: 1,
-						max: 505000,
+						max: 5000,
 						default: 1000
 					}
 				]
